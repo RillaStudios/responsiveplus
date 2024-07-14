@@ -4,6 +4,21 @@ enum DeviceType { android, ios, macos, windows, linux, fuchsia, web }
 
 enum ScreenType { mobile, tablet, desktop }
 
+/* 
+ResponseiveUtil class is a utility class that provides
+methods to initialize the responsive package and update
+the screen size and orientation when the screen size changes.
+
+It also provides some static variables to store the screen size,
+orientation, device type, and supported platforms.
+
+The init method is called when the app is launched to initialize
+the responsive package. The updateScreenSize method is called
+when the screen size changes to update the screen size and orientation.
+
+@author IFD
+@since 2024/07/12
+*/
 class ResponsiveUtil {
   static late BoxConstraints boxConstraints;
 
@@ -21,6 +36,13 @@ class ResponsiveUtil {
 
   static bool allowOrientationChange = false;
 
+  /* 
+  A method to call when the app is launched 
+  to initialize the responsive package
+
+  @author IFD
+  @since 2024/07/12
+  */
   static void init({required bool enableOrientationChange, required List<DeviceType> devicePlatforms}) {
     allowOrientationChange = enableOrientationChange;
 
@@ -37,6 +59,13 @@ class ResponsiveUtil {
     supportedPlatforms = devicePlatforms;
   }
 
+  /* 
+  A method to update the screen size and orientation
+  when the screen size changes
+
+  @author IFD
+  @since 2024/07/12
+  */
   static void updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
     boxConstraints = constraints;
 
