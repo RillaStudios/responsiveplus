@@ -3,6 +3,8 @@ import 'package:responsive/responsive.dart';
 import 'package:responsive_example/responsive_example.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   ResponsiveUtil.init(
     enableOrientationChange: true,
     devicePlatforms: [
@@ -24,8 +26,12 @@ class ResponsiveApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ResponsiveExample(),
+    return MaterialApp(
+      home: Responsive(
+        builder: (context, orientation, screenType) {
+          return const ResponsiveExample();
+        },
+      ),
     );
   }
 }

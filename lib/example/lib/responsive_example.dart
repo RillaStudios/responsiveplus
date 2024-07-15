@@ -6,13 +6,21 @@ class ResponsiveExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Device Type: ${ResponsiveUtil.deviceType}'),
-        Text('Screen Type: ${ResponsiveUtil.screenType}'),
-        Text('Width: ${ResponsiveUtil.width}'),
-        Text('Height: ${ResponsiveUtil.height}'),
-      ],
+    return Scaffold(
+      body: Center(
+        child: Container(
+          color: Colors.blue,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Device Type: ${ResponsiveUtil.deviceType}'),
+              Text('Screen Type: ${ResponsiveUtil.screenType}'),
+              Text('Width: ${ResponsiveUtil.width}'),
+              Text('Height: ${ResponsiveUtil.height}'),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -56,6 +56,26 @@ class ResponsiveUtil {
       throw Exception('Please provide at least one platform');
     }
 
+    //Sets the screen type based on the screen width
+    final double devicePixelRatio = WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
+
+    final double physicalWidth = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
+    width = physicalWidth / devicePixelRatio;
+
+    final double physicalHeight = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.height;
+    height = physicalHeight / devicePixelRatio;
+
+    if (width >= 1024) {
+      screenType = ScreenType.desktop;
+    } else if (width >= 600) {
+      screenType = ScreenType.tablet;
+    } else {
+      screenType = ScreenType.mobile;
+    }
+
+    //Sets the available platforms based on parameter input
+    //and checks weather device is eligible for app.
+
     supportedPlatforms = devicePlatforms;
 
     if (kIsWeb) {
@@ -118,12 +138,15 @@ class ResponsiveUtil {
 
     orientation = currentOrientation;
 
-    if (orientation == Orientation.portrait) {
-      width = boxConstraints.maxWidth;
-      height = boxConstraints.maxHeight;
+    width = boxConstraints.maxWidth;
+    height = boxConstraints.maxHeight;
+
+    if (width >= 1024) {
+      screenType = ScreenType.desktop;
+    } else if (width >= 600) {
+      screenType = ScreenType.tablet;
     } else {
-      width = boxConstraints.maxHeight;
-      height = boxConstraints.maxWidth;
+      screenType = ScreenType.mobile;
     }
   }
 }
