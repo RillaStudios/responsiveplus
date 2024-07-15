@@ -46,7 +46,7 @@ class ResponsiveUtil {
   static void init({required bool enableOrientationChange, required List<DeviceType> devicePlatforms}) {
     allowOrientationChange = enableOrientationChange;
 
-    if (!allowOrientationChange) {
+    if (!allowOrientationChange && !kIsWeb) {
       SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp],
       );
