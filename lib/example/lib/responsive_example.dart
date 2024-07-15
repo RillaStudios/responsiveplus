@@ -11,7 +11,7 @@ class ResponsiveExample extends StatelessWidget {
         builder: (context, orientation, screenType) {
           return Center(
             child: Container(
-              color: Colors.blue,
+              color: Colors.red,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
