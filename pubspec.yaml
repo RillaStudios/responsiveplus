@@ -1,8 +1,8 @@
+publish_to: none
+
 name: responsive
 description: A
 version: 0.1.0
-#author: Izaak Ford-Dow (Rilla Studios) - rillastudios@outlook.com
-homepage: https://github.com/TechnoUrmish/Sizer
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
