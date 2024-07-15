@@ -57,27 +57,6 @@ class ResponsiveUtil {
     }
 
     supportedPlatforms = devicePlatforms;
-  }
-
-  /* 
-  A method to update the screen size and orientation
-  when the screen size changes
-
-  @author IFD
-  @since 2024/07/12
-  */
-  static void updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
-    boxConstraints = constraints;
-
-    orientation = currentOrientation;
-
-    if (orientation == Orientation.portrait) {
-      width = boxConstraints.maxWidth;
-      height = boxConstraints.maxHeight;
-    } else {
-      width = boxConstraints.maxHeight;
-      height = boxConstraints.maxWidth;
-    }
 
     if (kIsWeb) {
       if (!supportedPlatforms.contains(DeviceType.web)) {
@@ -124,6 +103,27 @@ class ResponsiveUtil {
           break;
         default:
       }
+    }
+  }
+
+  /* 
+  A method to update the screen size and orientation
+  when the screen size changes
+
+  @author IFD
+  @since 2024/07/12
+  */
+  static void updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
+    boxConstraints = constraints;
+
+    orientation = currentOrientation;
+
+    if (orientation == Orientation.portrait) {
+      width = boxConstraints.maxWidth;
+      height = boxConstraints.maxHeight;
+    } else {
+      width = boxConstraints.maxHeight;
+      height = boxConstraints.maxWidth;
     }
   }
 }
