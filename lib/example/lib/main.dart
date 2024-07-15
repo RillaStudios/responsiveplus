@@ -28,9 +28,7 @@ class ResponsiveApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Responsive(
-        builder: (context, orientation, screenType) {
-          return const ResponsiveExample();
-        },
+        builder: (context, orientation, screenType) => const ResponsiveExample(),
       ),
     );
   }
