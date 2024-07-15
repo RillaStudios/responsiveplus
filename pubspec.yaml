@@ -2,7 +2,7 @@ publish_to: none
 
 name: responsive
 description: A
-version: 0.1.0
+version: 0.0.1
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
