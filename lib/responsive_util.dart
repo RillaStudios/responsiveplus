@@ -156,7 +156,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isMobile() {
+  static bool isMobile() {
     return screenType == ScreenType.mobile;
   }
 
@@ -166,7 +166,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isTablet() {
+  static bool isTablet() {
     return screenType == ScreenType.tablet;
   }
 
@@ -176,7 +176,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isDesktop() {
+  static bool isDesktop() {
     return screenType == ScreenType.desktop;
   }
 
@@ -186,7 +186,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isIos() {
+  static bool isIos() {
     return deviceType == DeviceType.ios;
   }
 
@@ -196,7 +196,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isAndroid() {
+  static bool isAndroid() {
     return deviceType == DeviceType.android;
   }
 
@@ -206,7 +206,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isMacOs() {
+  static bool isMacOs() {
     return deviceType == DeviceType.macos;
   }
 
@@ -216,7 +216,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isWindows() {
+  static bool isWindows() {
     return deviceType == DeviceType.windows;
   }
 
@@ -226,7 +226,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isLinux() {
+  static bool isLinux() {
     return deviceType == DeviceType.linux;
   }
 
@@ -236,7 +236,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isFuchsia() {
+  static bool isFuchsia() {
     return deviceType == DeviceType.fuchsia;
   }
 
@@ -246,7 +246,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  bool isWeb() {
+  static bool isWeb() {
     return deviceType == DeviceType.web;
   }
 
@@ -256,7 +256,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  DeviceType getDeviceType() {
+  static DeviceType getDeviceType() {
     return deviceType;
   }
 
@@ -266,7 +266,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  ScreenType getScreenType() {
+  static ScreenType getScreenType() {
     return screenType;
   }
 
@@ -276,7 +276,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  List<DeviceType> getSupportedPlatforms() {
+  static List<DeviceType> getSupportedPlatforms() {
     return supportedPlatforms;
   }
 
@@ -286,7 +286,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  Orientation getOrientation() {
+  static Orientation getOrientation() {
     return orientation;
   }
 
@@ -296,7 +296,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  BoxConstraints getBoxConstraints() {
+  static BoxConstraints getBoxConstraints() {
     return boxConstraints;
   }
 
@@ -306,7 +306,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  double getWidth() {
+  static double getWidth() {
     return width;
   }
 
@@ -316,7 +316,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  double getHeight() {
+  static double getHeight() {
     return height;
   }
 
@@ -326,7 +326,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  double getDouble({required double mobile, double? tablet, required double desktop}) {
+  static double getDouble({required double mobile, double? tablet, required double desktop}) {
     if (isMobile()) {
       return mobile;
     } else if (isTablet()) {
@@ -342,7 +342,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/15
   */
-  int getInt({required int mobile, int? tablet, required int desktop}) {
+  static int getInt({required int mobile, int? tablet, required int desktop}) {
     if (isMobile()) {
       return mobile;
     } else if (isTablet()) {
