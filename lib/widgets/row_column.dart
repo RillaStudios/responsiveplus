@@ -325,14 +325,12 @@ class RowColumn extends StatelessWidget {
   /// The default value is false.
   final bool? reverseChildren;
 
-  /* 
-  The main build method for the widget
-
-  @param context The current build context
-  @return The built widget
-  @author IFD
-  @since 2024/07/17
-  */
+  /// The main build method for the widget
+  ///
+  /// @param context The current build context
+  /// @return The built widget
+  /// @since 2024/07/17
+  /// @author IFD
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -358,14 +356,12 @@ class RowColumn extends StatelessWidget {
     );
   }
 
-  /* 
-  The styleWrap method is used to wrap the row or column in a Material widget
-
-  @param child The child widget that will be wrapped in the Material widget
-  @return The Material widget that wraps the row or column
-  @author IFD
-  @since 2024/07/17
-  */
+  /// The styleWrap method is used to wrap the row or column in a Material widget
+  ///
+  /// @param child The child widget that will be wrapped in the Material widget
+  /// @return The Material widget that wraps the row or column
+  /// @since 2024/07/17
+  /// @author IFD
   Widget styleWrap({required Widget child}) {
     return Container(
       width: width,
@@ -393,13 +389,11 @@ class RowColumn extends StatelessWidget {
     );
   }
 
-  /* 
-  The row method is used to build a row widget
-
-  @return The built row widget with the children inside it based on the screen size
-  @author IFD
-  @since 2024/07/17
-  */
+  /// The row method is used to build a row widget
+  ///
+  /// @return The built row widget with the children inside it based on the screen size
+  /// @author IFD
+  /// @since 2024/07/17
   Widget row() {
     return styleWrap(
       child: LayoutBuilder(builder: (context, constraints) {
@@ -419,13 +413,11 @@ class RowColumn extends StatelessWidget {
     );
   }
 
-  /* 
-  The column method is used to build a column widget
-  
-  @return The built column widget with the children inside it based on the screen size
-  @author IFD
-  @since 2024/07/17
-  */
+  /// The column method is used to build a column widget
+  ///
+  /// @return The built column widget with the children inside it based on the screen size
+  /// @author IFD
+  /// @since 2024/07/17
   Widget column() {
     return styleWrap(
       child: LayoutBuilder(
