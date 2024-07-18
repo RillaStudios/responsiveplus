@@ -23,6 +23,14 @@ enum ScreenType { mobile, tablet, desktop }
 /// @since 2024/07/12
 ///
 class ResponsiveUtil {
+  /// A variable to store the mobile breakpoint
+  ///
+  static late double _mobileBreakpoint;
+
+  /// A variable to store the tablet breakpoint
+  ///
+  static late double _tabletBreakpoint;
+
   /// A variable to store the box constraints
   ///
   static late BoxConstraints boxConstraints;
@@ -63,86 +71,95 @@ class ResponsiveUtil {
   /// @param devicePlatforms List<DeviceType>
   /// @since 2024/07/12
   /// @author IFD
-  static void init({required bool enableOrientationChange, required List<DeviceType> devicePlatforms}) {
-    allowOrientationChange = enableOrientationChange;
+  static void init({bool? enableOrientationChange, required List<DeviceType> allowedPlatforms, double? mobileBreakpoint, double? tabletBreakpoint}) {
+    ///
+    /// Set the static variable allowOrientationChange based on params
+    allowOrientationChange = enableOrientationChange == false ? false : true;
 
+    ///Set the breakpoints based on the parameters
+    ///or use the default breakpoints
+    ///
+    _mobileBreakpoint = mobileBreakpoint ?? 600;
+    _tabletBreakpoint = tabletBreakpoint ?? 1024;
+
+    /// If the allowOrientationChange is false and the platform is not web
+    /// then set the preferred orientation to portraitUp.
+    ///
+    /// This will prevent the app from changing orientation.
     if (!allowOrientationChange && !kIsWeb) {
       SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp],
       );
     }
 
-    if (devicePlatforms.isEmpty) {
-      throw Exception('Please provide at least one platform');
+    if (allowedPlatforms.isEmpty) {
+      throw ResponsiveException('Please provide at least one supported platform');
     }
 
-    //Sets the screen type based on the screen width
+    ///Sets the available platforms based on parameter input
+    ///and checks weather device is eligible for app.
+    supportedPlatforms = allowedPlatforms;
+
+    if (kIsWeb) {
+      deviceType = DeviceType.web;
+      if (!supportedPlatforms.contains(DeviceType.web)) {
+        throw ResponsiveFatalException('Web platform is not supported');
+      }
+    } else {
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          deviceType = DeviceType.android;
+          if (!supportedPlatforms.contains(DeviceType.android)) {
+            throw ResponsiveFatalException('Android platform is not supported');
+          }
+        case TargetPlatform.iOS:
+          deviceType = DeviceType.ios;
+          if (!supportedPlatforms.contains(DeviceType.ios)) {
+            throw ResponsiveFatalException('iOS platform is not supported');
+          }
+        case TargetPlatform.macOS:
+          deviceType = DeviceType.macos;
+          if (!supportedPlatforms.contains(DeviceType.macos)) {
+            throw ResponsiveFatalException('macOS platform is not supported');
+          }
+        case TargetPlatform.windows:
+          deviceType = DeviceType.windows;
+          if (!supportedPlatforms.contains(DeviceType.windows)) {
+            throw ResponsiveFatalException('Windows platform is not supported');
+          }
+        case TargetPlatform.linux:
+          deviceType = DeviceType.linux;
+          if (!supportedPlatforms.contains(DeviceType.linux)) {
+            throw ResponsiveFatalException('Linux platform is not supported');
+          }
+        case TargetPlatform.fuchsia:
+          deviceType = DeviceType.fuchsia;
+          if (!supportedPlatforms.contains(DeviceType.fuchsia)) {
+            throw ResponsiveFatalException('Fuchsia platform is not supported');
+          }
+        default:
+          throw ResponsiveFatalException('Unsupported Platform');
+      }
+    }
+
+    ///Sets the device pixel ratio based on the device
     final double devicePixelRatio = WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
 
+    ///Sets the screen width based on the screen width
     final double physicalWidth = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
     width = physicalWidth / devicePixelRatio;
 
+    ///Sets the screen height based on the screen height
     final double physicalHeight = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.height;
     height = physicalHeight / devicePixelRatio;
 
+    ///Sets the screenType based on the screen width
     if (width >= 1024) {
       screenType = ScreenType.desktop;
     } else if (width >= 600) {
       screenType = ScreenType.tablet;
     } else {
       screenType = ScreenType.mobile;
-    }
-
-    //Sets the available platforms based on parameter input
-    //and checks weather device is eligible for app.
-
-    supportedPlatforms = devicePlatforms;
-
-    if (kIsWeb) {
-      if (!supportedPlatforms.contains(DeviceType.web)) {
-        throw Exception('Web platform is not supported');
-      }
-      deviceType = DeviceType.web;
-    } else {
-      switch (defaultTargetPlatform) {
-        case TargetPlatform.android:
-          if (!supportedPlatforms.contains(DeviceType.android)) {
-            throw Exception('Android platform is not supported');
-          }
-          deviceType = DeviceType.android;
-          break;
-        case TargetPlatform.iOS:
-          if (!supportedPlatforms.contains(DeviceType.ios)) {
-            throw Exception('iOS platform is not supported');
-          }
-          deviceType = DeviceType.ios;
-          break;
-        case TargetPlatform.macOS:
-          if (!supportedPlatforms.contains(DeviceType.macos)) {
-            throw Exception('macOS platform is not supported');
-          }
-          deviceType = DeviceType.macos;
-          break;
-        case TargetPlatform.windows:
-          if (!supportedPlatforms.contains(DeviceType.windows)) {
-            throw Exception('Windows platform is not supported');
-          }
-          deviceType = DeviceType.windows;
-          break;
-        case TargetPlatform.linux:
-          if (!supportedPlatforms.contains(DeviceType.linux)) {
-            throw Exception('Linux platform is not supported');
-          }
-          deviceType = DeviceType.linux;
-          break;
-        case TargetPlatform.fuchsia:
-          if (!supportedPlatforms.contains(DeviceType.fuchsia)) {
-            throw Exception('Fuchsia platform is not supported');
-          }
-          deviceType = DeviceType.fuchsia;
-          break;
-        default:
-      }
     }
   }
 
@@ -162,9 +179,9 @@ class ResponsiveUtil {
     width = boxConstraints.maxWidth;
     height = boxConstraints.maxHeight;
 
-    if (width >= 1024) {
+    if (width >= _tabletBreakpoint) {
       screenType = ScreenType.desktop;
-    } else if (width >= 600) {
+    } else if (width >= _mobileBreakpoint) {
       screenType = ScreenType.tablet;
     } else {
       screenType = ScreenType.mobile;

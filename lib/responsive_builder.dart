@@ -17,7 +17,7 @@ published by TechnoUrmish, Urmish Patel on pub.dev.
 @urmishtech TechnoUrmish, Urmish Patel
 @since 2024/07/17
 */
-typedef ResponsiveBuilder = Widget Function(
+typedef ResponsiveBuilderType = Widget Function(
   BuildContext context,
   Orientation orientation,
   ScreenType screenType,
@@ -25,13 +25,13 @@ typedef ResponsiveBuilder = Widget Function(
 
 /// A widget that helps you build responsive UIs for different screen sizes and orientations.
 /// It takes a builder function as a parameter and returns a widget you provide.
-class Responsive extends StatelessWidget {
+class ResponsiveBuilder extends StatelessWidget {
   /// Creates a Responsive widget.
   ///
-  const Responsive({super.key, required this.builder});
+  const ResponsiveBuilder({super.key, required this.builder});
 
   /// The builder function that takes three parameters: context, orientation, and screenType.
-  final ResponsiveBuilder builder;
+  final ResponsiveBuilderType builder;
 
   /* 
   The build method of the Responsive widget.
