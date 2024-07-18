@@ -1,48 +1,68 @@
 part of 'responsive.dart';
 
+/// Enum to define the device type
+///
 enum DeviceType { android, ios, macos, windows, linux, fuchsia, web }
 
+/// Enum to define the screen type
+///
 enum ScreenType { mobile, tablet, desktop }
 
-/* 
-ResponseiveUtil class is a utility class that provides
-methods to initialize the responsive package and update
-the screen size and orientation when the screen size changes.
-
-It also provides some static variables to store the screen size,
-orientation, device type, and supported platforms.
-
-The init method is called when the app is launched to initialize
-the responsive package. The updateScreenSize method is called
-when the screen size changes to update the screen size and orientation.
-
-@author IFD
-@since 2024/07/12
-*/
+/// ResponseiveUtil class is a utility class that provides
+/// methods to initialize the responsive package and update
+/// the screen size and orientation when the screen size changes.
+///
+/// It also provides some static variables to store the screen size,
+/// orientation, device type, and supported platforms.
+///
+/// The init method is called when the app is launched to initialize
+/// the responsive package. The updateScreenSize method is called
+/// when the screen size changes to update the screen size and orientation.
+///
+/// @author IFD
+/// @since 2024/07/12
+///
 class ResponsiveUtil {
+  /// A variable to store the box constraints
+  ///
   static late BoxConstraints boxConstraints;
 
+  /// A variable to store the orientation
+  ///
   static late Orientation orientation;
 
+  /// A variable to store the device type
+  ///
   static late DeviceType deviceType;
 
+  /// A variable to store the screen type
+  ///
   static late ScreenType screenType;
 
+  /// A list to store the supported platforms
+  ///
   static late List<DeviceType> supportedPlatforms;
 
+  /// A double to store the screen width
+  ///
   static late double width;
 
+  /// A double to store the screen height
+  ///
   static late double height;
 
+  /// A bool to check weather the device is allowed to change orientation
+  ///
   static bool allowOrientationChange = false;
 
-  /* 
-  A method to call when the app is launched 
-  to initialize the responsive package
-
-  @author IFD
-  @since 2024/07/12
-  */
+  /// A method to initialize the responsive package
+  /// and set the screen size, orientation, device type,
+  /// and supported platforms.
+  ///
+  /// @param enableOrientationChange bool
+  /// @param devicePlatforms List<DeviceType>
+  /// @since 2024/07/12
+  /// @author IFD
   static void init({required bool enableOrientationChange, required List<DeviceType> devicePlatforms}) {
     allowOrientationChange = enableOrientationChange;
 
@@ -130,6 +150,7 @@ class ResponsiveUtil {
   A method to update the screen size and orientation
   when the screen size changes
 
+  @urmishtech TechnoUrmish, Urmish Patel
   @author IFD
   @since 2024/07/12
   */
@@ -150,182 +171,167 @@ class ResponsiveUtil {
     }
   }
 
-  /* 
-  A bool to check weather the device is mobile
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is mobile
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isMobile() {
     return screenType == ScreenType.mobile;
   }
 
-  /* 
-  A bool weather the device is tablet
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is tablet
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isTablet() {
     return screenType == ScreenType.tablet;
   }
 
-  /* 
-  A bool weather the device is desktop
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is desktop
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isDesktop() {
     return screenType == ScreenType.desktop;
   }
 
-  /* 
-  A bool weather the device is iOS
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is iOS
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isIos() {
     return deviceType == DeviceType.ios;
   }
 
-  /* 
-  A bool weather the device is Android
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is Android
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isAndroid() {
     return deviceType == DeviceType.android;
   }
 
-  /* 
-  A bool weather the device is macOS
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is macOS
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isMacOs() {
     return deviceType == DeviceType.macos;
   }
 
-  /* 
-  A bool weather the device is Windows
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is Windows
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isWindows() {
     return deviceType == DeviceType.windows;
   }
 
-  /* 
-  A bool weather the device is Linux
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is Linux
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isLinux() {
     return deviceType == DeviceType.linux;
   }
 
-  /* 
-  A bool weather the device is Fuchsia
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is Fuchsia
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isFuchsia() {
     return deviceType == DeviceType.fuchsia;
   }
 
-  /* 
-  A bool weather the device is Web
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A bool to check weather the device is Web
+  ///
+  /// @return bool
+  /// @since 2024/07/17
+  /// @author IFD
   static bool isWeb() {
     return deviceType == DeviceType.web;
   }
 
-  /* 
-  A method to get the current device type
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current device type
+  ///
+  /// @return DeviceType
+  /// @since 2024/07/15
+  /// @author IFD
   static DeviceType getDeviceType() {
     return deviceType;
   }
 
-  /* 
-  A method to get the current screen type
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current screen type
+  ///
+  /// @return ScreenType
+  /// @since 2024/07/15
+  /// @author IFD
   static ScreenType getScreenType() {
     return screenType;
   }
 
-  /* 
-  A method to get the supported platforms
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the supported platforms
+  ///
+  /// @return List<DeviceType>
+  /// @since 2024/07/15
+  /// @author IFD
   static List<DeviceType> getSupportedPlatforms() {
     return supportedPlatforms;
   }
 
-  /* 
-  A method to get the current orientation
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current orientation
+  ///
+  /// @return Orientation
+  /// @since 2024/07/15
+  /// @author IFD
   static Orientation getOrientation() {
     return orientation;
   }
 
-  /* 
-  A method to get the current box constraints
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current box constraints
+  ///
+  /// @return BoxConstraints
+  /// @since 2024/07/15
+  /// @author IFD
   static BoxConstraints getBoxConstraints() {
     return boxConstraints;
   }
 
-  /* 
-  A method to get the current screen width
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current screen width
+  ///
+  /// @return double
+  /// @since 2024/07/15
+  /// @author IFD
   static double getWidth() {
     return width;
   }
 
-  /* 
-  A method to get the current screen height
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to get the current screen height
+  ///
+  /// @return double
+  /// @since 2024/07/15
+  /// @author IFD
   static double getHeight() {
     return height;
   }
 
-  /* 
-  A method to return a double based on the screen type
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to return a double based on the screen type
+  ///
+  /// @param mobile double
+  /// @param tablet double
+  /// @param desktop double
+  /// @return double
+  /// @since 2024/07/15
+  /// @author IFD
   static double getDouble({required double mobile, double? tablet, required double desktop}) {
     if (isMobile()) {
       return mobile;
@@ -336,12 +342,13 @@ class ResponsiveUtil {
     }
   }
 
-  /* 
-  A method to return a int based on the screen type
-
-  @author IFD
-  @since 2024/07/15
-  */
+  /// A method to return a int based on the screen type
+  ///
+  /// @param mobile int
+  /// @param tablet int
+  /// @param desktop int
+  /// @return int
+  /// @since 2024/07/15
   static int getInt({required int mobile, int? tablet, required int desktop}) {
     if (isMobile()) {
       return mobile;
