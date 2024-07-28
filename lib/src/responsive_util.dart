@@ -1,4 +1,4 @@
-part of '../responsive.dart';
+part of 'package:responsive/responsive.dart';
 
 /// Enum to define the device type
 ///
@@ -59,6 +59,8 @@ class ResponsiveUtil {
   ///
   static bool allowOrientationChange = false;
 
+  static Widget? rextOverflowWidget;
+
   /// A method to initialize the responsive package
   /// and set the screen size, orientation, device type,
   /// and supported platforms.
@@ -67,7 +69,7 @@ class ResponsiveUtil {
   /// @param devicePlatforms List<DeviceType>
   /// @since 2024/07/12
   /// @author IFD
-  static void init({bool? enableOrientationChange, double? mobileBreakpoint, double? tabletBreakpoint}) {
+  static void init({bool? enableOrientationChange, double? mobileBreakpoint, double? tabletBreakpoint, Widget? textOverflowWidget}) {
     ///
     /// Set the static variable allowOrientationChange based on params
     allowOrientationChange = enableOrientationChange == false ? false : true;
@@ -127,6 +129,12 @@ class ResponsiveUtil {
       screenType = ScreenType.tablet;
     } else {
       screenType = ScreenType.mobile;
+    }
+
+    if (textOverflowWidget == null) {
+      rextOverflowWidget = const TextOverflowWidget();
+    } else {
+      rextOverflowWidget = textOverflowWidget;
     }
   }
 

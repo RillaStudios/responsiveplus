@@ -1,4 +1,4 @@
-part of '../responsive.dart';
+part of 'package:responsive/responsive.dart';
 
 /// A widget that helps you build responsive UIs for different screen sizes and orientations.
 class ResponsiveChild extends StatelessWidget {
@@ -13,7 +13,7 @@ class ResponsiveChild extends StatelessWidget {
   final Function(BoxConstraints constraints)? onScreenSizeChanged;
 
   /// Provides a child to the responsive widget. (required)
-  final Widget child;
+  final Widget Function(BuildContext context, BoxConstraints constraints) child;
 
   ///The main build method of the ResponsiveChild widget.
   @override
@@ -22,7 +22,7 @@ class ResponsiveChild extends StatelessWidget {
       builder: (context, constraints) {
         onScreenSizeChanged?.call(constraints);
 
-        return child;
+        return child(context, constraints);
       },
     );
   }

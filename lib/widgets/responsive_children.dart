@@ -1,4 +1,4 @@
-part of '../responsive.dart';
+part of 'package:responsive/responsive.dart';
 
 /// An enum that helps you to layout the direction of the children.
 enum ResponsiveChildrenLayout { column, row, wrap }

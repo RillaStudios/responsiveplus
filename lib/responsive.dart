@@ -43,3 +43,5 @@ part 'widgets/wrap_column.dart';
 part 'widgets/text_widgets/rext.dart';
 
 part 'widgets/text_widgets/rext_group.dart';
+
+part 'widgets/text_widgets/text_overflow_widget.dart';

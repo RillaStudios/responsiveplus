@@ -1,4 +1,4 @@
-part of '/responsive.dart';
+part of 'package:responsive/responsive.dart';
 
 ///
 /// A widget that will make text responsive
@@ -250,6 +250,9 @@ class RextState extends State<Rext> {
   ///The responsive font size of the text
   double? _responsiveFontSize;
 
+  ///A bool to check if the text fits
+  bool _fits = false;
+
   ///Initializes the state of the [Rext] widget
   ///and registers the widget to the [RextGroup]
   ///if it is provided.
@@ -327,49 +330,53 @@ class RextState extends State<Rext> {
   Widget _buildText(double fontSize, TextStyle style, int? maxLines) {
     ///If the [data] is provided, it will
     ///use the [data] to create the text
-    if (widget.data != null) {
-      ///Create the text widget with the
-      ///[data] and the responsive font size
-      return Text(
-        widget.data!,
-        key: widget.textKey,
-        style: style.copyWith(fontSize: fontSize),
-        strutStyle: widget.strutStyle,
-        textAlign: widget.textAlign,
-        textDirection: widget.textDirection,
-        locale: widget.locale,
-        softWrap: widget.softWrap,
-        overflow: widget.overflow,
-        maxLines: maxLines,
-        selectionColor: widget.selectionColor,
-        semanticsLabel: widget.semanticsLabel,
-        textHeightBehavior: widget.textHeightBehavior,
-        textScaler: widget.textScaler,
-        textWidthBasis: widget.textWidthBasis,
-      );
+    if (_fits) {
+      if (widget.data != null) {
+        ///Create the text widget with the
+        ///[data] and the responsive font size
+        return Text(
+          widget.data!,
+          key: widget.textKey,
+          style: style.copyWith(fontSize: fontSize),
+          strutStyle: widget.strutStyle,
+          textAlign: widget.textAlign,
+          textDirection: widget.textDirection,
+          locale: widget.locale,
+          softWrap: widget.softWrap,
+          overflow: widget.overflow,
+          maxLines: maxLines,
+          selectionColor: widget.selectionColor,
+          semanticsLabel: widget.semanticsLabel,
+          textHeightBehavior: widget.textHeightBehavior,
+          textScaler: widget.textScaler,
+          textWidthBasis: widget.textWidthBasis,
+        );
 
-      ///Otherwise, it will use the [InlineSpan]
-      ///to create the text widget
+        ///Otherwise, it will use the [TextSpan]
+        ///to create the text widget
+      } else {
+        ///Create the text widget with the
+        ///[TextSpan] and the responsive font size
+        return Text.rich(
+          widget.textSpan!,
+          key: widget.textKey,
+          style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
+          strutStyle: widget.strutStyle,
+          textAlign: widget.textAlign,
+          textDirection: widget.textDirection,
+          locale: widget.locale,
+          softWrap: widget.softWrap,
+          overflow: widget.overflow,
+          maxLines: maxLines,
+          selectionColor: widget.selectionColor,
+          semanticsLabel: widget.semanticsLabel,
+          textHeightBehavior: widget.textHeightBehavior,
+          textScaler: widget.textScaler,
+          textWidthBasis: widget.textWidthBasis,
+        );
+      }
     } else {
-      ///Create the text widget with the
-      ///[InlineSpan] and the responsive font size
-      return Text.rich(
-        widget.textSpan!,
-        key: widget.textKey,
-        style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
-        strutStyle: widget.strutStyle,
-        textAlign: widget.textAlign,
-        textDirection: widget.textDirection,
-        locale: widget.locale,
-        softWrap: widget.softWrap,
-        overflow: widget.overflow,
-        maxLines: maxLines,
-        selectionColor: widget.selectionColor,
-        semanticsLabel: widget.semanticsLabel,
-        textHeightBehavior: widget.textHeightBehavior,
-        textScaler: widget.textScaler,
-        textWidthBasis: widget.textWidthBasis,
-      );
+      return ResponsiveUtil.rextOverflowWidget!;
     }
   }
 
@@ -434,8 +441,10 @@ class RextState extends State<Rext> {
         ///of the parent widget, it will return
         ///the font size and break the loop
         if (_fitsConstraints(presetFontSize, style, constraints)) {
+          _fits = true;
           return presetFontSize;
         }
+        _fits = false;
       }
     }
 
@@ -468,8 +477,18 @@ class RextState extends State<Rext> {
     ///parent widget.
     ///
     if (fontSize > maxFontSize) {
+      if (_fitsConstraints(fontSize, style, constraints)) {
+        _fits = true;
+      } else {
+        _fits = false;
+      }
       return maxFontSize;
     } else {
+      if (_fitsConstraints(fontSize, style, constraints)) {
+        _fits = true;
+      } else {
+        _fits = false;
+      }
       return fontSize;
     }
   }
