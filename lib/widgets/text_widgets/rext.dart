@@ -38,6 +38,7 @@ class Rext extends StatefulWidget {
     this.textHeightBehavior,
     this.textScaler,
     this.textWidthBasis,
+    this.showDefaultOverflowWidget = false,
   }) : textSpan = null;
 
   /// Creates a [Rext] widget with a [TextSpan]
@@ -70,6 +71,7 @@ class Rext extends StatefulWidget {
     this.textHeightBehavior,
     this.textScaler,
     this.textWidthBasis,
+    this.showDefaultOverflowWidget = false,
   }) : data = null;
 
   /// The key to use for the text widget
@@ -238,6 +240,15 @@ class Rext extends StatefulWidget {
   ///
   final TextWidthBasis? textWidthBasis;
 
+  /// The default overflow widget to use
+  /// when the text does not fit the
+  /// constraints of the parent widget
+  ///
+  /// If not provided, the default overflow
+  /// will be the text with standard overflow
+  /// behavior
+  final bool showDefaultOverflowWidget;
+
   ///The [Rext] widget created by this widget
   ///
   @override
@@ -330,53 +341,52 @@ class RextState extends State<Rext> {
   Widget _buildText(double fontSize, TextStyle style, int? maxLines) {
     ///If the [data] is provided, it will
     ///use the [data] to create the text
-    if (_fits) {
-      if (widget.data != null) {
-        ///Create the text widget with the
-        ///[data] and the responsive font size
-        return Text(
-          widget.data!,
-          key: widget.textKey,
-          style: style.copyWith(fontSize: fontSize),
-          strutStyle: widget.strutStyle,
-          textAlign: widget.textAlign,
-          textDirection: widget.textDirection,
-          locale: widget.locale,
-          softWrap: widget.softWrap,
-          overflow: widget.overflow,
-          maxLines: maxLines,
-          selectionColor: widget.selectionColor,
-          semanticsLabel: widget.semanticsLabel,
-          textHeightBehavior: widget.textHeightBehavior,
-          textScaler: widget.textScaler,
-          textWidthBasis: widget.textWidthBasis,
-        );
+    ///
+    if (!_fits && widget.showDefaultOverflowWidget) return ResponsiveUtil.rextOverflowWidget!;
 
-        ///Otherwise, it will use the [TextSpan]
-        ///to create the text widget
-      } else {
-        ///Create the text widget with the
-        ///[TextSpan] and the responsive font size
-        return Text.rich(
-          widget.textSpan!,
-          key: widget.textKey,
-          style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
-          strutStyle: widget.strutStyle,
-          textAlign: widget.textAlign,
-          textDirection: widget.textDirection,
-          locale: widget.locale,
-          softWrap: widget.softWrap,
-          overflow: widget.overflow,
-          maxLines: maxLines,
-          selectionColor: widget.selectionColor,
-          semanticsLabel: widget.semanticsLabel,
-          textHeightBehavior: widget.textHeightBehavior,
-          textScaler: widget.textScaler,
-          textWidthBasis: widget.textWidthBasis,
-        );
-      }
+    if (widget.data != null) {
+      ///Create the text widget with the
+      ///[data] and the responsive font size
+      return Text(
+        widget.data!,
+        key: widget.textKey,
+        style: style.copyWith(fontSize: fontSize),
+        strutStyle: widget.strutStyle,
+        textAlign: widget.textAlign,
+        textDirection: widget.textDirection,
+        locale: widget.locale,
+        softWrap: widget.softWrap,
+        overflow: widget.overflow,
+        maxLines: maxLines,
+        selectionColor: widget.selectionColor,
+        semanticsLabel: widget.semanticsLabel,
+        textHeightBehavior: widget.textHeightBehavior,
+        textScaler: widget.textScaler,
+        textWidthBasis: widget.textWidthBasis,
+      );
+
+      ///Otherwise, it will use the [TextSpan]
+      ///to create the text widget
     } else {
-      return ResponsiveUtil.rextOverflowWidget!;
+      ///Create the text widget with the
+      ///[TextSpan] and the responsive font size
+      return Text.rich(
+        widget.textSpan!,
+        key: widget.textKey,
+        style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
+        strutStyle: widget.strutStyle,
+        textAlign: widget.textAlign,
+        textDirection: widget.textDirection,
+        locale: widget.locale,
+        softWrap: widget.softWrap,
+        overflow: widget.overflow,
+        maxLines: maxLines,
+        selectionColor: widget.selectionColor,
+        semanticsLabel: widget.semanticsLabel,
+        textHeightBehavior: widget.textHeightBehavior,
+        textScaler: widget.textScaler,
+        textWidthBasis: widget.textWidthBasis,
+      );
     }
   }
 
