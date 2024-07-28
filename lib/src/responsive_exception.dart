@@ -1,3 +1,5 @@
+part of '../responsive.dart';
+
 class ResponsiveException implements Exception {
   final String message;
 

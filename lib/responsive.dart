@@ -23,12 +23,23 @@ library responsive;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:responsive/responsive_exception.dart';
-import 'package:responsive/responsive_fatal_exception.dart';
 
-part 'responsive_util.dart';
+part 'src/responsive_util.dart';
 
-part 'responsive_extenisions.dart';
+part 'src/responsive_extenisions.dart';
 
-part 'responsive_builder.dart';
+part 'src/responsive_builder.dart';
+
+part 'src/responsive_exception.dart';
+
+part 'widgets/responsive_child.dart';
+
+part 'widgets/responsive_children.dart';
+
+part 'widgets/row_column.dart';
+
+part 'widgets/wrap_column.dart';
+
+part 'widgets/text_widgets/rext.dart';
+
+part 'widgets/text_widgets/rext_group.dart';

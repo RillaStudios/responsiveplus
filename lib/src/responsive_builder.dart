@@ -1,4 +1,4 @@
-part of 'responsive.dart';
+part of '../responsive.dart';
 
 /* 
 This is a functional widget that takes a builder function

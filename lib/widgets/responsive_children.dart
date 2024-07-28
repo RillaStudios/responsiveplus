@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../responsive.dart';
 
 /// An enum that helps you to layout the direction of the children.
 enum ResponsiveChildrenLayout { column, row, wrap }

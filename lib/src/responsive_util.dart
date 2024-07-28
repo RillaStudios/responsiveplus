@@ -1,4 +1,4 @@
-part of 'responsive.dart';
+part of '../responsive.dart';
 
 /// Enum to define the device type
 ///
@@ -47,10 +47,6 @@ class ResponsiveUtil {
   ///
   static late ScreenType screenType;
 
-  /// A list to store the supported platforms
-  ///
-  static late List<DeviceType> supportedPlatforms;
-
   /// A double to store the screen width
   ///
   static late double width;
@@ -71,7 +67,7 @@ class ResponsiveUtil {
   /// @param devicePlatforms List<DeviceType>
   /// @since 2024/07/12
   /// @author IFD
-  static void init({bool? enableOrientationChange, required List<DeviceType> allowedPlatforms, double? mobileBreakpoint, double? tabletBreakpoint}) {
+  static void init({bool? enableOrientationChange, double? mobileBreakpoint, double? tabletBreakpoint}) {
     ///
     /// Set the static variable allowOrientationChange based on params
     allowOrientationChange = enableOrientationChange == false ? false : true;
@@ -92,53 +88,24 @@ class ResponsiveUtil {
       );
     }
 
-    if (allowedPlatforms.isEmpty) {
-      throw ResponsiveException('Please provide at least one supported platform');
-    }
-
-    ///Sets the available platforms based on parameter input
-    ///and checks weather device is eligible for app.
-    supportedPlatforms = allowedPlatforms;
-
     if (kIsWeb) {
       deviceType = DeviceType.web;
-      if (!supportedPlatforms.contains(DeviceType.web)) {
-        throw ResponsiveFatalException('Web platform is not supported');
-      }
     } else {
       switch (defaultTargetPlatform) {
         case TargetPlatform.android:
           deviceType = DeviceType.android;
-          if (!supportedPlatforms.contains(DeviceType.android)) {
-            throw ResponsiveFatalException('Android platform is not supported');
-          }
         case TargetPlatform.iOS:
           deviceType = DeviceType.ios;
-          if (!supportedPlatforms.contains(DeviceType.ios)) {
-            throw ResponsiveFatalException('iOS platform is not supported');
-          }
         case TargetPlatform.macOS:
           deviceType = DeviceType.macos;
-          if (!supportedPlatforms.contains(DeviceType.macos)) {
-            throw ResponsiveFatalException('macOS platform is not supported');
-          }
         case TargetPlatform.windows:
           deviceType = DeviceType.windows;
-          if (!supportedPlatforms.contains(DeviceType.windows)) {
-            throw ResponsiveFatalException('Windows platform is not supported');
-          }
         case TargetPlatform.linux:
           deviceType = DeviceType.linux;
-          if (!supportedPlatforms.contains(DeviceType.linux)) {
-            throw ResponsiveFatalException('Linux platform is not supported');
-          }
         case TargetPlatform.fuchsia:
           deviceType = DeviceType.fuchsia;
-          if (!supportedPlatforms.contains(DeviceType.fuchsia)) {
-            throw ResponsiveFatalException('Fuchsia platform is not supported');
-          }
         default:
-          throw ResponsiveFatalException('Unsupported Platform');
+          throw ResponsiveException('Unsupported Platform: $defaultTargetPlatform is not supported. Not setting device type.');
       }
     }
 
@@ -294,15 +261,6 @@ class ResponsiveUtil {
   /// @author IFD
   static ScreenType getScreenType() {
     return screenType;
-  }
-
-  /// A method to get the supported platforms
-  ///
-  /// @return List<DeviceType>
-  /// @since 2024/07/15
-  /// @author IFD
-  static List<DeviceType> getSupportedPlatforms() {
-    return supportedPlatforms;
   }
 
   /// A method to get the current orientation

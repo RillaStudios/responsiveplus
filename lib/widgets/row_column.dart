@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:responsive/responsive.dart';
+part of '../responsive.dart';
 
 /// A widget that allows you to build a row or column based on the screen size.
 ///

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:responsive/responsive.dart';
+part of '../responsive.dart';
 
 /// A widget that will build a [Wrap] or [Column] based on the screen size.
 ///
