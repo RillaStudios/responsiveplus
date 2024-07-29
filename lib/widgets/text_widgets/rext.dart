@@ -275,7 +275,20 @@ class RextState extends State<Rext> {
       widget.rextGroup!.registerText(this);
     }
 
+    ///Check for errors
+    checkForErrors();
     super.initState();
+  }
+
+  ///Disposes the state of the [Rext] widget
+  ///and removes the widget from the [RextGroup]
+  @override
+  void dispose() {
+    if (widget.rextGroup != null) {
+      widget.rextGroup!.remove(this);
+    }
+
+    super.dispose();
   }
 
   ///Builds the [Rext] widget
@@ -529,5 +542,43 @@ class RextState extends State<Rext> {
     ///number of lines. Otherwise, return
     ///false.
     return !(textPainter.didExceedMaxLines || textPainter.width > constraints.maxWidth);
+  }
+
+  ///Notifies the [RextGroup] that the
+  ///font size of the [Rext] widget has
+  ///been updated. It will rebuild the
+  ///widget.
+  void notifyTextChange() {
+    setState(() {});
+  }
+
+  ///Checks for errors in the [Rext] widget
+  ///and throws an error if there is an issue.
+  void checkForErrors() {
+    assert(widget.data != null || widget.textSpan != null, throw ResponsiveException('Rext widget must have either a text (string) or textSpan property'));
+    if (widget.rextGroup != null) {
+      assert(
+        widget.fontSize == null,
+        throw ResponsiveException('Font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupFontSize property in the RextGroup instead'),
+      );
+      assert(
+        widget.maxFontSize == null,
+        throw ResponsiveException('Max font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxFontSize property in the RextGroup instead'),
+      );
+      assert(
+        widget.minFontSize == null,
+        throw ResponsiveException('Min font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMinFontSize property in the RextGroup instead'),
+      );
+      assert(
+        widget.presetFontSizes == null,
+        throw ResponsiveException('Preset font sizes in the Rext widget cannot be used when a RextGroup is provided. Use the groupPresetFontSizes property in the RextGroup instead'),
+      );
+      assert(
+        widget.maxLines == null,
+        throw ResponsiveException('Max lines in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxLines property in the RextGroup instead'),
+      );
+      assert(widget.adjustmentSize == null,
+          throw ResponsiveException('Adjustment size in the Rext widget cannot be used when a RextGroup is provided. Use the groupAdjustmentSize property in the RextGroup instead'));
+    }
   }
 }

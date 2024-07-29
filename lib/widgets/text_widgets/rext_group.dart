@@ -54,6 +54,10 @@ class RextGroup {
   /// The font size of the [RextState] widgets will be determined by the [RextState] widget itself.
   final Map<RextState, double> rextListeners = {};
 
+  /// The [RextState] widgets in the group that have been notified.
+  /// That the font size of the [RextState] widgets in the group has been updated.
+  bool rextsNotified = false;
+
   /// Registers a [RextState] widget in the group.
   /// This method is used to register a [RextState] widget in the group.
   void registerText(RextState rext) {
@@ -65,12 +69,49 @@ class RextGroup {
   double updateGroupFontSize(RextState rext, double newFontSize) {
     rextListeners[rext] = newFontSize;
 
+    double oldSize = 0;
+
     for (var size in rextListeners.values) {
       if (size < newFontSize) {
+        oldSize = size;
         newFontSize = size;
       }
     }
 
+    if (newFontSize != oldSize) {
+      rextsNotified = false;
+      scheduleMicrotask(notify);
+    }
+
     return newFontSize;
+  }
+
+  /// Notifies the [RextState] widgets in the group that the font size has been updated.
+  /// This method is used to notify the [RextState] widgets in the group that the font size has been updated.
+  /// It is called when the font size of the [RextState] widgets in the group has been updated.
+  /// It is used to ensure that all [RextState] widgets in the group have the same font size.
+  void notify() {
+    /// If the [RextState] widgets in the group have already been notified, return.
+    if (rextsNotified) {
+      return;
+    }
+
+    /// If the [RextState] widgets in the group have not been notified, notify them.
+    rextsNotified = true;
+
+    /// Notify the [RextState] widgets in the group that the font size has been updated.
+    /// This is done by calling the [notifyTextChange] method of the [RextState] widgets in the group.
+    for (var rext in rextListeners.keys) {
+      if (rext.mounted) {
+        rext.notifyTextChange();
+      }
+    }
+  }
+
+  /// Removes a [RextState] widget from the group.
+  /// This method is used to remove a [RextState] widget from the group.
+  void remove(RextState rext) {
+    updateGroupFontSize(rext, rext._responsiveFontSize ?? 14);
+    rextListeners.remove(rext);
   }
 }

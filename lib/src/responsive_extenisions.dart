@@ -20,4 +20,16 @@ extension ResponsiveExt on num {
   ///The value is calculated by multiplying the number by the width of the screen and dividing by 3 divided by 100
   ///Example: 10.sp will return 10% of the width of the screen divided by 3 divided by 100
   double get sp => this * (ResponsiveUtil.width / 3) / 100;
+
+  ///Converts the number to a responsive width value based on the constraints
+  ///of the parent widget
+  ///
+  ///The value is calculated by multiplying the number by the maximum width of the constraints and dividing by 100
+  double cw(BoxConstraints constraints) => this * constraints.maxWidth / 100;
+
+  ///Converts the number to a responsive height value based on the constraints
+  ///of the parent widget
+  ///
+  ///The value is calculated by multiplying the number by the maximum height of the constraints and dividing by 100
+  double ch(BoxConstraints constraints) => this * constraints.maxHeight / 100;
 }
