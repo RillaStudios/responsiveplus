@@ -16,6 +16,9 @@ class Rext extends StatefulWidget {
   /// will fit all of them.
   ///
   const Rext(
+    ///Creates a [Rext] widget with a [Text] widget
+    ///as its child. This is the simplest way to
+    ///create a [Rext] widget.
     String this.data, {
     super.key,
     this.textKey,
