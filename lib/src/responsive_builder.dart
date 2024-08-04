@@ -17,6 +17,7 @@ part of 'package:responsive/responsive.dart';
 /// @since 2024/07/17
 typedef ResponsiveBuilderType = Widget Function(
   BuildContext context,
+  BoxConstraints constraints,
   Orientation orientation,
   ScreenType screenType,
 );
@@ -48,6 +49,7 @@ class ResponsiveBuilder extends StatelessWidget {
             ResponsiveUtil.updateScreenSize(constraints, orientation);
             return builder(
               context,
+              constraints,
               ResponsiveUtil.orientation,
               ResponsiveUtil.screenType,
             );
