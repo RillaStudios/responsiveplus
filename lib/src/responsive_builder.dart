@@ -46,7 +46,7 @@ class ResponsiveBuilder extends StatelessWidget {
       builder: (context, constraints) {
         return OrientationBuilder(
           builder: (context, orientation) {
-            ResponsiveUtil.updateScreenSize(constraints, orientation);
+            ResponsiveUtil._updateScreenSize(constraints, orientation);
             return builder(
               context,
               constraints,

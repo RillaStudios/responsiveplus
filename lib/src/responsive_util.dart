@@ -146,7 +146,7 @@ class ResponsiveUtil {
   @author IFD
   @since 2024/07/12
   */
-  static void updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
+  static void _updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
     boxConstraints = constraints;
 
     orientation = currentOrientation;

@@ -1,0 +1,4 @@
+The entire Text widgets (Rext and RextGroups) in this package
+were strongly inspired by the auto_size_text package by simc.dev.
+
+Link to their package: https://pub.dev/packages/auto_size_text
