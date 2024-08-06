@@ -134,6 +134,6 @@ from the package authors, and more.
 
 ## Support me
 
-By supporting me, you're not just funding my work; you're becoming a part of my development journey. I love sharing my progress, challenges, and successes with my supporters. Your contributions will allow me to keep creating and sharing valuable content, from in-depth tutorials to innovative projects. Together, we can push the boundaries of what's possible with Flutter and inspire others to join this incredible field.
+Enjoying this package? Consider supporting my work. Your contributions will allow me to keep creating and sharing valuable content and innovative projects.
 
 <a href="https://www.buymeacoffee.com/izaakford" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
