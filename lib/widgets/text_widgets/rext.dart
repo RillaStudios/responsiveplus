@@ -8,10 +8,6 @@ part of 'package:responsive/responsive.dart';
 /// will fit all of them.
 ///
 class Rext extends StatefulWidget {
-  ///Determines weather the text is selectable
-  ///
-  final bool _isSelectable;
-
   ///
   /// A widget that will make text responsive
   /// Has the ability to group multiple [Rext]
@@ -65,6 +61,7 @@ class Rext extends StatefulWidget {
         selectionHeightStyle = null,
         selectionWidthStyle = null,
         showCursor = null,
+        useDefaultContextMenuOnWeb = false,
         _isSelectable = false;
 
   /// Creates a [Rext] widget with a [TextSpan]
@@ -117,6 +114,7 @@ class Rext extends StatefulWidget {
         selectionHeightStyle = null,
         selectionWidthStyle = null,
         showCursor = null,
+        useDefaultContextMenuOnWeb = false,
         _isSelectable = false;
 
   /// Creates a [Rext] widget with a [SelectableText] widget
@@ -165,6 +163,7 @@ class Rext extends StatefulWidget {
     this.selectionHeightStyle,
     this.selectionWidthStyle,
     this.showCursor,
+    this.useDefaultContextMenuOnWeb = false,
   })  : textSpan = null,
         _isSelectable = true;
 
@@ -214,6 +213,7 @@ class Rext extends StatefulWidget {
     this.selectionHeightStyle,
     this.selectionWidthStyle,
     this.showCursor,
+    this.useDefaultContextMenuOnWeb = false,
   })  : data = null,
         _isSelectable = true;
 
@@ -397,6 +397,19 @@ class Rext extends StatefulWidget {
   /// List of all the variable parameters for
   /// the selectables [Rext] widgets
   ///
+  ///
+
+  ///Determines weather the text is selectable
+  ///
+  final bool _isSelectable;
+
+  ///Determines weather or not to show the prebuilt context menu
+  ///on web platforms. If set to false, the default context menu
+  ///will be shown as provided by the clients web browser.
+  ///
+  ///If not provided, the default value will be false
+  ///
+  final bool useDefaultContextMenuOnWeb;
 
   /// The autofocus of the text when the
   /// [Rext] is selectable
@@ -578,6 +591,8 @@ class RextState extends State<Rext> {
     if (widget._isSelectable && widget.contextMenuBuilder != null) {
       BrowserContextMenu.disableContextMenu();
     }
+
+    print(widget.useDefaultContextMenuOnWeb);
 
     ///Check for errors
     checkForErrors();
