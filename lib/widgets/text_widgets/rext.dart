@@ -8,6 +8,10 @@ part of 'package:responsive/responsive.dart';
 /// will fit all of them.
 ///
 class Rext extends StatefulWidget {
+  ///Determines weather the text is selectable
+  ///
+  final bool _isSelectable;
+
   ///
   /// A widget that will make text responsive
   /// Has the ability to group multiple [Rext]
@@ -42,7 +46,26 @@ class Rext extends StatefulWidget {
     this.textScaler,
     this.textWidthBasis,
     this.showDefaultOverflowWidget = false,
-  }) : textSpan = null;
+  })  : textSpan = null,
+        autofocus = null,
+        contextMenuBuilder = null,
+        cursorColor = null,
+        cursorHeight = null,
+        cursorRadius = null,
+        cursorWidth = null,
+        dragStartBehavior = null,
+        enableInteractiveSelection = null,
+        focusNode = null,
+        magnifierConfiguration = null,
+        minLines = null,
+        onSelectionChanged = null,
+        onTap = null,
+        scrollPhysics = null,
+        selectionControls = null,
+        selectionHeightStyle = null,
+        selectionWidthStyle = null,
+        showCursor = null,
+        _isSelectable = false;
 
   /// Creates a [Rext] widget with a [TextSpan]
   /// as its child. The [TextSpan] can contain
@@ -75,7 +98,124 @@ class Rext extends StatefulWidget {
     this.textScaler,
     this.textWidthBasis,
     this.showDefaultOverflowWidget = false,
-  }) : data = null;
+  })  : data = null,
+        autofocus = null,
+        contextMenuBuilder = null,
+        cursorColor = null,
+        cursorHeight = null,
+        cursorRadius = null,
+        cursorWidth = null,
+        dragStartBehavior = null,
+        enableInteractiveSelection = null,
+        focusNode = null,
+        magnifierConfiguration = null,
+        minLines = null,
+        onSelectionChanged = null,
+        onTap = null,
+        scrollPhysics = null,
+        selectionControls = null,
+        selectionHeightStyle = null,
+        selectionWidthStyle = null,
+        showCursor = null,
+        _isSelectable = false;
+
+  /// Creates a [Rext] widget with a [SelectableText] widget
+  /// as its child. This is useful when you need to make
+  /// the text selectable. You can also apply the [RextGroup]
+  /// to this widget.
+  const Rext.selectable(
+    String this.data, {
+    super.key,
+    this.textKey,
+    this.adjustmentSize,
+    this.locale,
+    this.fontSize,
+    this.maxFontSize,
+    this.minFontSize,
+    this.maxLines,
+    this.overflow,
+    this.rextGroup,
+    this.presetFontSizes,
+    this.selectionColor,
+    this.semanticsLabel,
+    this.strutStyle,
+    this.style,
+    this.softWrap,
+    this.textAlign,
+    this.textDirection,
+    this.textHeightBehavior,
+    this.textScaler,
+    this.textWidthBasis,
+    this.showDefaultOverflowWidget = false,
+    this.autofocus,
+    this.contextMenuBuilder,
+    this.cursorColor,
+    this.cursorHeight,
+    this.cursorRadius,
+    this.cursorWidth,
+    this.dragStartBehavior,
+    this.enableInteractiveSelection,
+    this.focusNode,
+    this.magnifierConfiguration,
+    this.minLines,
+    this.onSelectionChanged,
+    this.onTap,
+    this.scrollPhysics,
+    this.selectionControls,
+    this.selectionHeightStyle,
+    this.selectionWidthStyle,
+    this.showCursor,
+  })  : textSpan = null,
+        _isSelectable = true;
+
+  /// Creates a [Rext] widget with a [SelectableText.rich] as
+  /// its child. This is useful when you need to make the text
+  /// selectable and style different parts of the text differently.
+  /// You can also apply the [RextGroup] to this widget.
+  const Rext.selectableRich(
+    TextSpan this.textSpan, {
+    super.key,
+    this.textKey,
+    this.fontSize,
+    this.adjustmentSize,
+    this.locale,
+    this.maxFontSize,
+    this.minFontSize,
+    this.maxLines,
+    this.overflow,
+    this.presetFontSizes,
+    this.rextGroup,
+    this.selectionColor,
+    this.semanticsLabel,
+    this.strutStyle,
+    this.style,
+    this.softWrap,
+    this.textAlign,
+    this.textDirection,
+    this.textHeightBehavior,
+    this.textScaler,
+    this.textWidthBasis,
+    this.showDefaultOverflowWidget = false,
+    this.autofocus,
+    this.contextMenuBuilder,
+    this.cursorColor,
+    this.cursorHeight,
+    this.cursorRadius,
+    this.cursorWidth,
+    this.dragStartBehavior,
+    this.enableInteractiveSelection,
+    this.focusNode,
+    this.magnifierConfiguration,
+    this.minLines,
+    this.onSelectionChanged,
+    this.onTap,
+    this.scrollPhysics,
+    this.selectionControls,
+    this.selectionHeightStyle,
+    this.selectionWidthStyle,
+    this.showCursor,
+  })  : data = null,
+        _isSelectable = true;
 
   /// The key to use for the text widget
   /// created by this widget
@@ -252,6 +392,31 @@ class Rext extends StatefulWidget {
   /// behavior
   final bool showDefaultOverflowWidget;
 
+  ///
+  ///
+  /// List of all the variable parameters for
+  /// the selectables [Rext] widgets
+  ///
+
+  final bool? autofocus;
+  final Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
+  final Color? cursorColor;
+  final double? cursorHeight;
+  final Radius? cursorRadius;
+  final double? cursorWidth;
+  final DragStartBehavior? dragStartBehavior;
+  final bool? enableInteractiveSelection;
+  final FocusNode? focusNode;
+  final TextMagnifierConfiguration? magnifierConfiguration;
+  final int? minLines;
+  final void Function(TextSelection selection, SelectionChangedCause? cause)? onSelectionChanged;
+  final GestureTapCallback? onTap;
+  final ScrollPhysics? scrollPhysics;
+  final TextSelectionControls? selectionControls;
+  final BoxHeightStyle? selectionHeightStyle;
+  final BoxWidthStyle? selectionWidthStyle;
+  final bool? showCursor;
+
   ///The [Rext] widget created by this widget
   ///
   @override
@@ -363,6 +528,47 @@ class RextState extends State<Rext> {
     if (widget.data != null) {
       ///Create the text widget with the
       ///[data] and the responsive font size
+      ///
+      ///
+      ///If the text is selectable, it will
+      ///use the [SelectableText] widget to
+      ///create the text widget
+      if (widget._isSelectable) {
+        return SelectableText(
+          widget.data!,
+          key: widget.textKey,
+          style: style.copyWith(fontSize: fontSize),
+          strutStyle: widget.strutStyle,
+          textAlign: widget.textAlign,
+          textDirection: widget.textDirection,
+          maxLines: maxLines,
+          semanticsLabel: widget.semanticsLabel,
+          textHeightBehavior: widget.textHeightBehavior,
+          textScaler: widget.textScaler,
+          textWidthBasis: widget.textWidthBasis,
+          autofocus: widget.autofocus ?? false,
+          contextMenuBuilder: widget.contextMenuBuilder,
+          cursorColor: widget.cursorColor,
+          cursorHeight: widget.cursorHeight,
+          cursorRadius: widget.cursorRadius,
+          cursorWidth: widget.cursorWidth ?? 2.0,
+          dragStartBehavior: widget.dragStartBehavior ?? DragStartBehavior.start,
+          enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+          focusNode: widget.focusNode,
+          magnifierConfiguration: widget.magnifierConfiguration,
+          minLines: widget.minLines,
+          onSelectionChanged: widget.onSelectionChanged,
+          onTap: widget.onTap,
+          scrollPhysics: widget.scrollPhysics,
+          selectionControls: widget.selectionControls,
+          selectionHeightStyle: widget.selectionHeightStyle ?? BoxHeightStyle.tight,
+          selectionWidthStyle: widget.selectionWidthStyle ?? BoxWidthStyle.tight,
+          showCursor: widget.showCursor ?? false,
+        );
+      }
+
+      ///Otherwise, it will use the [Text]
+      ///widget to create the text widget
       return Text(
         widget.data!,
         key: widget.textKey,
@@ -386,6 +592,46 @@ class RextState extends State<Rext> {
     } else {
       ///Create the text widget with the
       ///[TextSpan] and the responsive font size
+      ///
+      ///If the text is selectable, it will
+      ///use the [SelectableText.rich] widget
+      ///to create the text widget
+      if (widget._isSelectable) {
+        return SelectableText.rich(
+          widget.textSpan!,
+          key: widget.textKey,
+          style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
+          strutStyle: widget.strutStyle,
+          textAlign: widget.textAlign,
+          textDirection: widget.textDirection,
+          maxLines: maxLines,
+          semanticsLabel: widget.semanticsLabel,
+          textHeightBehavior: widget.textHeightBehavior,
+          textScaler: widget.textScaler,
+          textWidthBasis: widget.textWidthBasis,
+          autofocus: widget.autofocus ?? false,
+          contextMenuBuilder: widget.contextMenuBuilder,
+          cursorColor: widget.cursorColor,
+          cursorHeight: widget.cursorHeight,
+          cursorRadius: widget.cursorRadius,
+          cursorWidth: widget.cursorWidth ?? 2.0,
+          dragStartBehavior: widget.dragStartBehavior ?? DragStartBehavior.start,
+          enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
+          focusNode: widget.focusNode,
+          magnifierConfiguration: widget.magnifierConfiguration,
+          minLines: widget.minLines,
+          onSelectionChanged: widget.onSelectionChanged,
+          onTap: widget.onTap,
+          scrollPhysics: widget.scrollPhysics,
+          selectionControls: widget.selectionControls,
+          selectionHeightStyle: widget.selectionHeightStyle ?? BoxHeightStyle.tight,
+          selectionWidthStyle: widget.selectionWidthStyle ?? BoxWidthStyle.tight,
+          showCursor: widget.showCursor ?? false,
+        );
+      }
+
+      ///Otherwise, it will use the [Text.rich]
+      ///widget to create the text widget
       return Text.rich(
         widget.textSpan!,
         key: widget.textKey,
