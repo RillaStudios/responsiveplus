@@ -141,11 +141,17 @@ class ExampleApp extends StatelessWidget {
 
 ```
 
-## Additional information
+## ℹ️ Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+<h3>🪄 Feature request?</h3>
+
+Have an idea to make this package even better? Tell us on the <a>ResponsivePlus discussion page (GitHub)</a>
+
+<h3>🪲 Found a bug?</h3>
+
+Please report all bugs or issues on the <a href="https://github.com/RillaStudios/responsiveplus/issues">ResponsivePlus issues page (GitHub)</a>
+
+We encourage you to report anything package related to the GitHub repository pages as any and all input will help make this package even better in future versions!
 
 ## 🚀 Support
 
@@ -155,4 +161,4 @@ Enjoying this package? Consider supporting my work. Your contributions will allo
 
 ## 🌟 Inspiration
 
-This package is heavily inspired by many other responsive packages out there. Special mention to <a href="https://pub.dev/packages/auto_size_text" target="_blank">auto_size_text</a> and <a href="https://pub.dev/packages/auto_size_text" target="_blank">sizer</a> as their projects are heavily responsible for the inspiration of creating this package.
+This package is heavily inspired by many other responsive packages out there. Special mention to <a href="https://pub.dev/packages/auto_size_text" target="_blank">auto_size_text</a> and <a href="https://pub.dev/packages/auto_size_text" target="_blank">sizer</a> as their projects are heavily responsible for the inspiration to create this package.
