@@ -85,9 +85,20 @@ The ResponsivePlus package comes with built in extensions to help easily set the
 
 ## 📋 Getting started
 
-## 🧪 Usage
-
 To use this package, add ResponsivePlus as a dependency in your pubspec.yaml file.
+
+```yaml
+dependencies:
+  responsiveplus: ^1.0.0
+```
+
+Import the package
+
+```dart
+import 'package:responsive/responsive.dart';
+```
+
+## 🧪 Example
 
 ```dart
 import 'package:responsive/responsive.dart';
@@ -145,7 +156,7 @@ class ExampleApp extends StatelessWidget {
 
 <h3>🪄 Feature request?</h3>
 
-Have an idea to make this package even better? Tell us on the <a>ResponsivePlus discussion page (GitHub)</a>
+Have an idea to make this package even better? Tell us on the <a href="https://github.com/RillaStudios/responsiveplus/discussions">ResponsivePlus discussion page (GitHub)</a>
 
 <h3>🪲 Found a bug?</h3>
 
