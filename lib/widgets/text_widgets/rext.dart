@@ -588,11 +588,9 @@ class RextState extends State<Rext> {
       widget.rextGroup!.registerText(this);
     }
 
-    if (widget._isSelectable && widget.contextMenuBuilder != null) {
+    if (widget._isSelectable && widget.contextMenuBuilder != null && widget.useDefaultContextMenuOnWeb) {
       BrowserContextMenu.disableContextMenu();
     }
-
-    print(widget.useDefaultContextMenuOnWeb);
 
     ///Check for errors
     checkForErrors();
@@ -607,7 +605,7 @@ class RextState extends State<Rext> {
       widget.rextGroup!.remove(this);
     }
 
-    if (widget._isSelectable && widget.contextMenuBuilder != null) {
+    if (widget._isSelectable && widget.contextMenuBuilder != null && widget.useDefaultContextMenuOnWeb) {
       BrowserContextMenu.enableContextMenu();
     }
     super.dispose();
