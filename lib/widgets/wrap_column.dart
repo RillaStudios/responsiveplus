@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// A widget that will build a [Wrap] or [Column] based on the screen size.
 ///

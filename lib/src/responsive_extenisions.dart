@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 ///Extension for responsive values
 ///

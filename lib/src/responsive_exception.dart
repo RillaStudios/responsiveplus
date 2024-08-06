@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// A custom exception that is thrown when an error occurs in the Responsive package.
 class ResponsiveException implements Exception {

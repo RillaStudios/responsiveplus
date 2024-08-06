@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// This is a functional widget that takes a builder function
 /// as a parameter and returns a widget. The builder function

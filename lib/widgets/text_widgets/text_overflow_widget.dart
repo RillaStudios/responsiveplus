@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// TextOverflowWidget is a widget that displays an icon when the text overflows
 /// the screen size.

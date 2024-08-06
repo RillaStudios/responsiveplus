@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// A widget that allows you to build a row or column based on the screen size.
 ///

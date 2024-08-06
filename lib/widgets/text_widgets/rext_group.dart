@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// A group of [RextState] widgets that share the same font size.
 /// This class is used to manage the font size of the [RextState] widgets.

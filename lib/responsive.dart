@@ -7,18 +7,20 @@
 ///
 ///This package is inspired by the Sizer package,
 ///published by TechnoUrmish, Urmish Patel on pub.dev.
-///A few of the methods and classes are lifted from the
-///Sizer package and modified to suit the needs of this
-///package. All methods with '@urmishtech' are lifted or
-///modified from the Sizer package.
 ///
 ///Sizer package (GitHub): https://github.com/TechnoUrmish/Sizer
 ///Sizer package (pub.dev): https://pub.dev/packages/sizer
 ///
+///This package is also inspired by the auto_size_text package,
+///published by simc.dev on pub.dev.
+///
+///auto_size_text package (GitHub): https://github.com/simc
+///auto_size_text package (pub.dev): https://pub.dev/packages/auto_size_text
+///
 ///@author IFD
 ///@since 2024/07/12
 ///
-library responsive;
+library responsiveplus;
 
 import 'dart:async';
 import 'dart:ui';

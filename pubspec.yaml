@@ -1,6 +1,6 @@
 publish_to: none
 
-name: responsive
+name: responsiveplus
 description: ResponsivePlus is a powerful and versatile package designed to simplify and enhance responsive design in Flutter applications. It offers a comprehensive set of tools, methods, and custom widgets that enable developers to create highly adaptable and customizable user interfaces. Whether you are building for mobile, tablet, or desktop, ResponsivePlus ensures your app looks great on any screen size or orientation.
 version: 1.0.0
 

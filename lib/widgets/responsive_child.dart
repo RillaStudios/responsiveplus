@@ -1,4 +1,4 @@
-part of 'package:responsive/responsive.dart';
+part of 'package:responsiveplus/responsive.dart';
 
 /// A widget that helps you build responsive UIs for different screen sizes and orientations.
 class ResponsiveChild extends StatelessWidget {
