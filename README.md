@@ -83,6 +83,12 @@ The ResponsivePlus package comes with built in extensions to help easily set the
 - cw(constraints) - Converts the number to a responsive width value based on the constraint width of the parent widget
 - ch(constraints) - Converts the number to a responsive heigth value based on the constraint height of the parent widget
 
+## 📽️ Video Tutorial
+
+Watch this tutorial for a better undestanding of all the projects features.
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/jx2dDV2eWBM)](https://youtu.be/jx2dDV2eWBM)
+
 ## 📋 Getting started
 
 To use this package, add ResponsivePlus as a dependency in your pubspec.yaml file.
