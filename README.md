@@ -19,7 +19,7 @@ This package provides many widgets and methods to add repsonsivness to your Flut
 
 List of features:
 
-Widgets:
+<b><u>Widgets:</u></b>
 
 - RowColumn widget: Adds ability to display a Row or Column widget based off current screen size.
 - WrapColumn widget: Adds ability to display a Wrap or Column widget based off current screen size.
@@ -27,7 +27,7 @@ Widgets:
 - ResponsiveChilren widget: A wrap around multiple chilred which will make all the children responsive and react to screen size changes.
 - Rext widget: A Text widget that will automatically adjust its size based on screen size.
 
-Methods (ResponsiveUtil class):
+<b><u>Methods (ResponsiveUtil class):</u></b>
 
 - ResponsiveUtil.init(): Used to initialize the current screen type, device type, breakpoints, and more. Basically ensures all ResponsivePlus variables will be initialized. Should be called in main method.
 - ResponsiveUtil.isMobile(): Returns weather the current screen size is mobile (bool).
@@ -49,7 +49,7 @@ Methods (ResponsiveUtil class):
 - ResponsiveUtil.getDouble(): Will return a double based on current ScreenType (double)
 - ResponsiveUtil.getInt(): Will return an int based on current ScreenType (int)
 
-<b>Extensions (double):</b>
+<b><u>Extensions (double):</u></b>
 
 - w: Converts a number to a responsive width value (example: 10.w - 10% of screen width)
 - h: Converts a number to a responsive height value (example: 10.h - 10% of screen height)
