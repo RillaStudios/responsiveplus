@@ -13,7 +13,7 @@ and the Flutter guide for
 
 ResponsivePlus is a powerful and versatile package designed to simplify and enhance responsive design in Flutter applications. It offers a comprehensive set of tools, methods, and custom widgets that enable developers to create highly adaptable and customizable user interfaces. Whether you are building for mobile, tablet, or desktop, ResponsivePlus ensures your app looks great on any screen size or orientation.
 
-ResponsivePlus attempts to make life a little easier and your projects dependency list smaller. The ResponsivePlus package aims to provide you with a package that can handle all aspects of making your apps responsive from auto resizing widgets and text!
+ResponsivePlus attempts to make life a little easier and your projects dependency list smaller. The ResponsivePlus package aims to provide you with a package that can handle all aspects of making your apps responsive from custom responsive widgets to auto resizing widgets and text!
 
 ## 📌 Features
 
@@ -29,6 +29,7 @@ List of features:
 - ResponsiveChilren widget: A wrap around multiple chilred which will make all the children responsive and react to screen size changes.
 
 <h4>🗚 Rext Widget</h4>
+
 - Rext widget: A Text widget that will automatically adjust its size based on screen size.
 - Rext Group: A RextGroup can be added to any and multiple Rext widgets. When assigning a RextGroup to a Rext widget this will ensure all the Rexts in that group have the same font size.
 
@@ -50,7 +51,7 @@ List of features:
 
 The ResponsivePlus package comes with many easily callable methods, which can help you develop UI and logic components based on the users device, screen size, orientation, etc.
 
-- ResponsiveUtil.init(): Used to initialize the current screen type, device type, breakpoints, and more. Basically ensures all ResponsivePlus variables will be initialized. Should be called in main method.
+- ResponsiveUtil.init() - Used to initialize the current screen type, device type, breakpoints, and more. Basically ensures all ResponsivePlus variables will be initialized. Should be called in main method.
 - ResponsiveUtil.isMobile() - Returns weather the current screen size is mobile (bool).
 - ResponsiveUtil.isTablet() - Returns weather the current screen size is tablet (bool).
 - ResponsiveUtil.isDesktop() - Retruns weather the current screen size is desktop (bool).
@@ -108,14 +109,24 @@ class ExampleApp extends StatelessWidget {
               print('Screen size changed to: ${constraints.maxWidth}x${constraints.maxHeight}');
             },
             child: (context, constraints) {
-              /// Child will get size of the parent container
-              /// and can use it to calculate the size of its children,
-              /// in this case it is a Rext widget.
+              /// Child will set its constraints based on the
+              /// size of the parent container and can use it
+              ///to calculate the size of its children, in this
+              ///case it is a Rext widget.
+              ///
+              ///Explanation:
+              ///
+              ///Lets pretend the users screen size is 1000px
+              ///
+              ///The Container is 75% of the screen height (which would be 750px)
+              ///The Rext widgets initial font size is 2% of that 750px, which would
+              ///equal 15px.
+              ///
               return Center(
                 child: Rext(
                   'This is a Rext widget inside a Container',
                   maxLines: 1,
-                  fontSize: 50.cw(constraints),
+                  fontSize: 2.cw(constraints),
                 ),
               );
             },

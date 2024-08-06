@@ -413,7 +413,7 @@ class Rext extends StatefulWidget {
   /// If not provided, the default
   /// context menu builder will be null
   ///
-  final Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
+  final Widget Function(BuildContext context, EditableTextState editableTextState)? contextMenuBuilder;
 
   /// The color of the cursor when the [Rext] is selectable
   ///
