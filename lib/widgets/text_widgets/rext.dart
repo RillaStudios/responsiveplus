@@ -398,23 +398,155 @@ class Rext extends StatefulWidget {
   /// the selectables [Rext] widgets
   ///
 
+  /// The autofocus of the text when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default autofocus
+  /// will be false
+  ///
   final bool? autofocus;
+
+  /// The context menu builder for the
+  /// text created by this widget
+  /// when the [Rext] is selectable
+  ///
+  /// If not provided, the default
+  /// context menu builder will be null
+  ///
   final Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
+
+  /// The color of the cursor when the [Rext] is selectable
+  ///
+  /// If not provided, the default cursor color
+  /// will be null
   final Color? cursorColor;
+
+  /// The height of the cursor when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default cursor
+  /// height will be null
   final double? cursorHeight;
+
+  /// The radius of the cursor when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default cursor
+  /// radius will be null
+  ///
   final Radius? cursorRadius;
+
+  /// The width of the cursor when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default cursor
+  /// width will be 2.0
+  ///
   final double? cursorWidth;
+
+  /// The drag start behavior of the text
+  /// created by this widget when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default drag
+  /// start behavior will be DragStartBehavior.start
+  ///
   final DragStartBehavior? dragStartBehavior;
+
+  /// The interactive selection of the text
+  /// created by this widget when the [Rext]
+  /// is selectable
+  ///
+  /// If not provided, the default interactive
+  /// selection will be true
+  ///
   final bool? enableInteractiveSelection;
+
+  /// The focus node of the text created
+  /// by this widget when the [Rext] is
+  /// selectable
+  ///
+  /// If not provided, the default focus
+  /// node will be null
+  ///
   final FocusNode? focusNode;
+
+  /// The magnifier configuration of the
+  /// text created by this widget when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default magnifier
+  /// configuration will be null
+  ///
   final TextMagnifierConfiguration? magnifierConfiguration;
+
+  /// The minimum number of lines of the
+  /// text created by this widget when the
+  /// [Rext] is selectable
+  ///
+  /// If not provided, the default minimum
+  /// number of lines will be null
+  ///
   final int? minLines;
+
+  /// The selection changed of the text
+  /// created by this widget when the [Rext]
+  /// is selectable
+  ///
+  /// If not provided, the default selection
+  /// changed will be null
+  ///
   final void Function(TextSelection selection, SelectionChangedCause? cause)? onSelectionChanged;
+
+  /// The tap of the text created by this
+  /// widget when the [Rext] is selectable
+  ///
+  /// If not provided, the default tap will
+  /// be null
+  ///
   final GestureTapCallback? onTap;
+
+  /// The scroll physics of the text created
+  /// by this widget when the [Rext] is selectable
+  ///
+  /// If not provided, the default scroll
+  /// physics will be null
+  ///
   final ScrollPhysics? scrollPhysics;
+
+  /// The selection controls of the text
+  /// created by this widget when the [Rext]
+  /// is selectable
+  ///
+  /// If not provided, the default selection
+  /// controls will be null
+  ///
   final TextSelectionControls? selectionControls;
+
+  /// The selection height style of the text
+  /// created by this widget when the [Rext]
+  /// is selectable
+  ///
+  /// If not provided, the default selection
+  /// height style will be BoxHeightStyle.tight
+  ///
   final BoxHeightStyle? selectionHeightStyle;
+
+  /// The selection width style of the text
+  /// created by this widget when the [Rext]
+  /// is selectable
+  ///
+  /// If not provided, the default selection
+  /// width style will be BoxWidthStyle.tight
+  ///
   final BoxWidthStyle? selectionWidthStyle;
+
+  /// The show cursor of the text created
+  /// by this widget when the [Rext] is selectable
+  ///
+  /// If not provided, the default show cursor
+  /// will be false
+  ///
   final bool? showCursor;
 
   ///The [Rext] widget created by this widget
