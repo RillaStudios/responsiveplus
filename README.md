@@ -49,7 +49,7 @@ List of features:
 - ResponsiveUtil.getDouble(): Will return a double based on current ScreenType (double)
 - ResponsiveUtil.getInt(): Will return an int based on current ScreenType (int)
 
-<b><u>Extensions (double):</u></b>
+<u><b>Extensions (double):</b></u>
 
 - w: Converts a number to a responsive width value (example: 10.w - 10% of screen width)
 - h: Converts a number to a responsive height value (example: 10.h - 10% of screen height)
