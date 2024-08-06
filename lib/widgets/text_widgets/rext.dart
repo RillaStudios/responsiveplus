@@ -575,6 +575,10 @@ class RextState extends State<Rext> {
       widget.rextGroup!.registerText(this);
     }
 
+    if (widget._isSelectable && widget.contextMenuBuilder != null) {
+      BrowserContextMenu.disableContextMenu();
+    }
+
     ///Check for errors
     checkForErrors();
     super.initState();
@@ -588,6 +592,9 @@ class RextState extends State<Rext> {
       widget.rextGroup!.remove(this);
     }
 
+    if (widget._isSelectable && widget.contextMenuBuilder != null) {
+      BrowserContextMenu.enableContextMenu();
+    }
     super.dispose();
   }
 
