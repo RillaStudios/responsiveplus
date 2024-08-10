@@ -27,8 +27,6 @@ List of features:
 
 - RowColumn widget: Adds ability to display a Row or Column widget based off current screen size.
 - WrapColumn widget: Adds ability to display a Wrap or Column widget based off current screen size.
-- ResponsiveChild widget: A wrap around a singlular child which will make the child responsive and react to screen size changes.
-- ResponsiveChilren widget: A wrap around multiple chilred which will make all the children responsive and react to screen size changes.
 
 <h4>🗚 Rext Widget</h4>
 

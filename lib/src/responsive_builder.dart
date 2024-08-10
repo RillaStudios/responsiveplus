@@ -11,9 +11,9 @@ part of 'package:responsiveplus/responsive.dart';
 ///
 /// Note that the builder function is inspired by the Sizer package,
 /// published by TechnoUrmish, Urmish Patel on pub.dev.
+/// @urmishtech TechnoUrmish, Urmish Patel
 ///
 /// @author IFD
-/// @urmishtech TechnoUrmish, Urmish Patel
 /// @since 2024/07/17
 typedef ResponsiveBuilderType = Widget Function(
   BuildContext context,
@@ -27,17 +27,27 @@ typedef ResponsiveBuilderType = Widget Function(
 class ResponsiveBuilder extends StatelessWidget {
   /// Creates a Responsive widget.
   ///
-  const ResponsiveBuilder({super.key, required this.builder});
+  const ResponsiveBuilder({super.key, required this.builder, this.onScreenSizeChange});
 
   /// The builder function that takes three parameters: context, orientation, and screenType.
   final ResponsiveBuilderType builder;
+
+  /// A function that is called when the screen size changes.
+  /// The function takes four parameters: context, constraints, orientation, and screenType.
+  /// The context parameter is the build context of the widget.
+  /// The constraints parameter is the constraints of the widget.
+  /// The orientation parameter is the orientation of the screen.
+  /// The screenType parameter is the type of screen (mobile, tablet, desktop).
+  ///
+  /// This functions is optional.
+  ///
+  final Function(BuildContext? context, BoxConstraints? constraints, Orientation? orientation, ScreenType? screenType)? onScreenSizeChange;
 
   ///
   /// The build method of the Responsive widget.
   ///
   /// @param context The build context of the widget.
   /// @return The widget that is built based on the screen orientation and type.
-  /// @urmishtech TechnoUrmish, Urmish Patel
   /// @author IFD
   /// @since 2024/07/17
   @override
@@ -47,6 +57,9 @@ class ResponsiveBuilder extends StatelessWidget {
         return OrientationBuilder(
           builder: (context, orientation) {
             ResponsiveUtil._updateScreenSize(constraints, orientation);
+
+            onScreenSizeChange != null ? onScreenSizeChange!(context, constraints, orientation, ResponsiveUtil._screenType) : null;
+
             return builder(
               context,
               constraints,

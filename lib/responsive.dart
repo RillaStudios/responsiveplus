@@ -38,10 +38,6 @@ part 'src/responsive_builder.dart';
 
 part 'src/responsive_exception.dart';
 
-part 'widgets/responsive_child.dart';
-
-part 'widgets/responsive_children.dart';
-
 part 'widgets/row_column.dart';
 
 part 'widgets/wrap_column.dart';

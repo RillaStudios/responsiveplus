@@ -10,8 +10,8 @@ class TextOverflowWidget extends StatelessWidget {
   ///The main build method of the TextOverflowWidget widget.
   @override
   Widget build(BuildContext context) {
-    return ResponsiveChild(
-      child: (context, constraints, orientation, screenType) {
+    return ResponsiveBuilder(
+      builder: (context, constraints, orientation, screenType) {
         return Icon(
           Icons.error,
           size: constraints.maxWidth * 0.1,
