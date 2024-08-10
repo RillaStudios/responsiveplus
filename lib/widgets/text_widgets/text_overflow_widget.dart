@@ -11,7 +11,7 @@ class TextOverflowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveChild(
-      child: (context, constraints) {
+      child: (context, constraints, orientation, screenType) {
         return Icon(
           Icons.error,
           size: constraints.maxWidth * 0.1,

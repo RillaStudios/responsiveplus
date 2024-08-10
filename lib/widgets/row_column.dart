@@ -335,10 +335,10 @@ class RowColumn extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         //Check if a custom breakpoint has been assigned
-        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil.width) {
+        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil._width) {
           return columnToRow != true ? column() : row();
         } else {
-          switch (ResponsiveUtil.screenType) {
+          switch (ResponsiveUtil._screenType) {
             case ScreenType.mobile:
               return columnToRow != true ? column() : row();
             case ScreenType.tablet:

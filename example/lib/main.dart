@@ -34,7 +34,7 @@ class ExampleApp extends StatelessWidget {
               /// This function will be called whenever the screen size changes (this is an optional parameter)
               print('Screen size changed to: ${constraints.maxWidth}x${constraints.maxHeight}');
             },
-            child: (context, constraints) {
+            child: (context, constraints, orientation, screenType) {
               /// Child will set its constraints based on the
               /// size of the parent container and can use it
               ///to calculate the size of its children, in this

@@ -54,40 +54,291 @@ List of features:
 The ResponsivePlus package comes with many easily callable methods, which can help you develop UI and logic components based on the users device, screen size, orientation, etc.
 
 - ResponsiveUtil.init() - Used to initialize the current screen type, device type, breakpoints, and more. Basically ensures all ResponsivePlus variables will be initialized. Should be called in main method.
+
 - ResponsiveUtil.isMobile() - Returns weather the current screen size is mobile (bool).
+
+  - Example
+
+  ```dart
+    Text('This is some font at size: ', style: TextStyle(fontSize: ResponsiveUtil.isMobile() ? 12 : 16))
+  ```
+
 - ResponsiveUtil.isTablet() - Returns weather the current screen size is tablet (bool).
+
+  - Example
+
+  ```dart
+    Text('This is some font at size: ', style: TextStyle(fontSize: ResponsiveUtil.isTablet() ? 14 : 16))
+  ```
+
 - ResponsiveUtil.isDesktop() - Retruns weather the current screen size is desktop (bool).
+
+  - Example
+
+  ```dart
+    Text('This is some font at size: ', style: TextStyle(fontSize: ResponsiveUtil.isDesktop() ? 18 : 14))
+  ```
+
 - ResponsiveUtil.isIos() - Returns weather the current device is an IOS device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isIos() ? 'This is an IOS device!' : 'This is NOT an IOS device!')
+  ```
+
 - ResponsiveUtil.isAndroid() - Returns weather the current device is an IOS device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isAndroid() ? 'This is an Android device!' : 'This is NOT an Android device!')
+  ```
+
 - ResponsiveUtil.isMacOs() - Returns weather the current device is a macOS device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isAndroid() ? 'This is a MacOS device!' : 'This is NOT a MacOS device!')
+  ```
+
 - ResponsiveUtil.isWindows() - Returns weather the current device is a Windows device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isWindows() ? 'This is a Windows device!' : 'This is NOT a Windows device!')
+  ```
+
 - ResponsiveUtil.isLinux() - Returns weather the current device is a Linux device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isLinux() ? 'This is a Linux device!' : 'This is NOT a Linux device!')
+  ```
+
 - ResponsiveUtil.isFuchsia() - Returns weather the current device is a Fuchsia device (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isFuchsia() ? 'This is a Fuchsia device!' : 'This is NOT a Fuchsia device!')
+  ```
+
 - ResponsiveUtil.isWeb() - Returns weather the current device is a Web platform (bool).
+
+  - Example
+
+  ```dart
+    Text(ResponsiveUtil.isWeb() ? 'This is a Web platform!' : 'This is NOT a Web platform!')
+  ```
+
 - ResponsiveUtil.getDeviceType() - Returns the current device type (DeviceType - ios, android, macos, windows, linux, fuchsia, web)
+
+  - Example
+
+  ```dart
+    void deviceGetter() {
+      DeviceType currentDevice = ResponsiveUtil.getDeviceType();
+
+      switch (currentDevice) {
+        case DeviceType.android:
+          print('im android');
+
+        ///Other device types cases...
+        ///
+        default:
+          print('im another device');
+      }
+    }
+  ```
+
 - ResponsiveUtil.getScreenType() - Returns the current screen type (ScreenType - mobile, tablet, desktop)
+
+  - Example
+
+  ```dart
+    void screenGetter() {
+      ScreenType currentScreen = ResponsiveUtil.getScreenType();
+
+      switch (currentScreen) {
+        case ScreenType.mobile:
+          print('im mobile');
+
+        ///Other screen types cases...
+        ///
+        default:
+          print('im another screen type');
+      }
+    }
+  ```
+
 - ResponsiveUtil.getOrientation() - Returns the current screen type (Orientation)
+
+  - Example
+
+  ```dart
+    void orientationGetter() {
+      Orientation currentOrientation = ResponsiveUtil.getOrientation();
+
+      switch (currentOrientation) {
+        case Orientation.landscape:
+          print('im landscape');
+
+        ///Other screen types cases...
+        ///
+        default:
+          print('im another orientation');
+      }
+    }
+  ```
+
 - ResponsiveUtil.getBoxConstraints() - Returns the current BoxConstraints of the whole screen (BoxConstraints)
+
+  - Example
+
+  ```dart
+    void boxConstraintsGetter() {
+      BoxConstraints currentConstraints = ResponsiveUtil.getBoxConstraints();
+
+      if(currentConstraints.maxWidth > 750) {
+        print('constraint width smaller than 750px!');
+      }
+    }
+  ```
+
 - ResponsiveUtil.getWidth() - Returns the current screen width (double)
+
+  - Example
+
+  ```dart
+    void widthGetter() {
+      double currentWidth = ResponsiveUtil.getWidth();
+
+        print('screen width is $currentWidth');
+
+    }
+  ```
+
 - ResponsiveUtil.getHeight() - Returns the current screen height (double)
+
+  - Example
+
+  ```dart
+    void heightGetter() {
+      double currentHeight = ResponsiveUtil.getHeight();
+
+        print('screen height is $currentHeight');
+
+    }
+  ```
+
 - ResponsiveUtil.getDouble() - Will return a double based on current ScreenType (double)
+
+  - Example
+
+  ```dart
+   Text('This is some font at size: ', style: TextStyle(fontSize: ResponsiveUtil.getDouble(mobile: 14, tablet: 16, desktop: 18)))
+  ```
+
 - ResponsiveUtil.getInt() - Will return an int based on current ScreenType (int)
+
+  - Example
+
+  ```dart
+   void example() {
+    int startingInt = ResponsiveUtil.getInt(mobile: 5, tablet: 10, desktop: 30);
+
+    print(startingInt);
+   }
+  ```
 
 <h3>🔗 Extensions:</h3>
 
 The ResponsivePlus package comes with built in extensions to help easily set the size of UI components based off screen or constraint sizes.
 
 - w - Converts a number to a responsive width value (example: 10.w - 10% of screen width)
+
+  - Example
+
+  ```dart
+  Container(width: 50.w, color: Colors.blue, child: Text('50% of screen width!'))
+  ```
+
 - h - Converts a number to a responsive height value (example: 10.h - 10% of screen height)
+
+  - Example
+
+  ```dart
+  Container(width: 25.h, color: Colors.blue, child: Text('25% of screen height!'))
+  ```
+
 - sp - Converts a number to a scaleable pixel value (example: 3.sp)
+
+  - Example
+
+  ```dart
+   Text('This is some font at size: ', style: TextStyle(fontSize: 5.sp))
+  ```
+
 - cw(constraints) - Converts the number to a responsive width value based on the constraint width of the parent widget
+
+  - Example
+
+  ```dart
+  Container(
+    width: 100,
+    height: 100,
+    color: Colors.red,
+    child: LayoutBuilder(
+      builder: (context, constraints) {
+        Center(
+          child: Container(
+              width: 50.cw(constraints), //50% of 100 - 50px
+              height: 20,
+              color: Colors.blue),
+        );
+      },
+    ),
+  );
+  ```
+
 - ch(constraints) - Converts the number to a responsive heigth value based on the constraint height of the parent widget
+
+  - Example
+
+  ```dart
+  Container(
+    width: 100,
+    height: 100,
+    color: Colors.red,
+    child: LayoutBuilder(
+      builder: (context, constraints) {
+        Center(
+          child: Container(
+              width: 50,
+              height: 20.ch(constraints), //20% of 100 - 20px
+              color: Colors.blue),
+        );
+      },
+    ),
+  );
+  ```
+
+<!--
+
+Im going to try and make a YouTube video for this package, or if someone whose
+better at making videos wants to show it off I would be more than happy to link it.
 
 ## 📽️ Video Tutorial
 
 Watch this tutorial for a better undestanding of all the projects features.
 
-[![](https://markdown-videos-api.jorgenkh.no/youtube/jx2dDV2eWBM)](https://youtu.be/jx2dDV2eWBM)
+[![](https://markdown-videos-api.jorgenkh.no/youtube/VID_ID_HERE)](https://youtu.be/VID_ID_HERE)
+
+-->
 
 ## 📋 Getting started
 

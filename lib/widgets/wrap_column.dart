@@ -383,10 +383,10 @@ class WrapColumn extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         //Check if a custom breakpoint has been assigned
-        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil.width) {
+        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil._width) {
           return columnToRow != true ? column() : wrap();
         } else {
-          switch (ResponsiveUtil.screenType) {
+          switch (ResponsiveUtil._screenType) {
             case ScreenType.mobile:
               return columnToRow != true ? column() : wrap();
             case ScreenType.tablet:

@@ -675,7 +675,7 @@ class RextState extends State<Rext> {
     ///If the [data] is provided, it will
     ///use the [data] to create the text
     ///
-    if (!_fits && widget.showDefaultOverflowWidget) return ResponsiveUtil.rextOverflowWidget!;
+    if (!_fits && widget.showDefaultOverflowWidget) return ResponsiveUtil._rextOverflowWidget!;
 
     if (widget.data != null) {
       ///Create the text widget with the

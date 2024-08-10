@@ -25,6 +25,7 @@ class ResponsiveChildren extends StatelessWidget {
     this.runAlignment,
     this.runSpacing,
     this.spacing,
+    this.onScreenSizeChanged,
   });
 
   /// Provides a list of children to the responsive widget. (required)
@@ -114,11 +115,18 @@ class ResponsiveChildren extends StatelessWidget {
   ///
   final double? spacing;
 
+  /// Performs an action when the screen size is changed.
+  ///
+  /// This is optional and defaults to null.
+  final Function(BoxConstraints constraints)? onScreenSizeChanged;
+
   ///The main build method of the ResponsiveChildren widget.
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        onScreenSizeChanged?.call(constraints);
+
         final List<Widget> builder = children(context, constraints);
         switch (layout) {
           case ResponsiveChildrenLayout.row:

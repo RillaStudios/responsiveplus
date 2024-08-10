@@ -50,8 +50,8 @@ class ResponsiveBuilder extends StatelessWidget {
             return builder(
               context,
               constraints,
-              ResponsiveUtil.orientation,
-              ResponsiveUtil.screenType,
+              ResponsiveUtil._orientation,
+              ResponsiveUtil._screenType,
             );
           },
         );

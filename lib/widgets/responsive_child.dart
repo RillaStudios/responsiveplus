@@ -13,16 +13,16 @@ class ResponsiveChild extends StatelessWidget {
   final Function(BoxConstraints constraints)? onScreenSizeChanged;
 
   /// Provides a child to the responsive widget. (required)
-  final Widget Function(BuildContext context, BoxConstraints constraints) child;
+  final Widget Function(BuildContext context, BoxConstraints constraints, Orientation orientation, ScreenType screenType) child;
 
   ///The main build method of the ResponsiveChild widget.
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
+    return ResponsiveBuilder(
+      builder: (context, constraints, orientation, screenType) {
         onScreenSizeChanged?.call(constraints);
 
-        return child(context, constraints);
+        return child(context, constraints, orientation, screenType);
       },
     );
   }

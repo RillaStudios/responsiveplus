@@ -33,33 +33,33 @@ class ResponsiveUtil {
 
   /// A variable to store the box constraints
   ///
-  static late BoxConstraints boxConstraints;
+  static late BoxConstraints _boxConstraints;
 
   /// A variable to store the orientation
   ///
-  static late Orientation orientation;
+  static late Orientation _orientation;
 
   /// A variable to store the device type
   ///
-  static late DeviceType deviceType;
+  static late DeviceType _deviceType;
 
   /// A variable to store the screen type
   ///
-  static late ScreenType screenType;
+  static late ScreenType _screenType;
 
   /// A double to store the screen width
   ///
-  static late double width;
+  static late double _width;
 
   /// A double to store the screen height
   ///
-  static late double height;
+  static late double _height;
 
   /// A bool to check weather the device is allowed to change orientation
   ///
-  static bool allowOrientationChange = false;
+  static bool _allowOrientationChange = false;
 
-  static Widget? rextOverflowWidget;
+  static Widget? _rextOverflowWidget;
 
   /// A method to initialize the responsive package
   /// and set the screen size, orientation, device type,
@@ -72,7 +72,7 @@ class ResponsiveUtil {
   static void init({bool? enableOrientationChange, double? mobileBreakpoint, double? tabletBreakpoint, Widget? textOverflowWidget}) {
     ///
     /// Set the static variable allowOrientationChange based on params
-    allowOrientationChange = enableOrientationChange == false ? false : true;
+    _allowOrientationChange = enableOrientationChange == false ? false : true;
 
     ///Set the breakpoints based on the parameters
     ///or use the default breakpoints
@@ -84,28 +84,28 @@ class ResponsiveUtil {
     /// then set the preferred orientation to portraitUp.
     ///
     /// This will prevent the app from changing orientation.
-    if (!allowOrientationChange && !kIsWeb) {
+    if (!_allowOrientationChange && !kIsWeb) {
       SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp],
       );
     }
 
     if (kIsWeb) {
-      deviceType = DeviceType.web;
+      _deviceType = DeviceType.web;
     } else {
       switch (defaultTargetPlatform) {
         case TargetPlatform.android:
-          deviceType = DeviceType.android;
+          _deviceType = DeviceType.android;
         case TargetPlatform.iOS:
-          deviceType = DeviceType.ios;
+          _deviceType = DeviceType.ios;
         case TargetPlatform.macOS:
-          deviceType = DeviceType.macos;
+          _deviceType = DeviceType.macos;
         case TargetPlatform.windows:
-          deviceType = DeviceType.windows;
+          _deviceType = DeviceType.windows;
         case TargetPlatform.linux:
-          deviceType = DeviceType.linux;
+          _deviceType = DeviceType.linux;
         case TargetPlatform.fuchsia:
-          deviceType = DeviceType.fuchsia;
+          _deviceType = DeviceType.fuchsia;
         default:
           throw ResponsiveException('Unsupported Platform: $defaultTargetPlatform is not supported. Not setting device type.');
       }
@@ -116,25 +116,25 @@ class ResponsiveUtil {
 
     ///Sets the screen width based on the screen width
     final double physicalWidth = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
-    width = physicalWidth / devicePixelRatio;
+    _width = physicalWidth / devicePixelRatio;
 
     ///Sets the screen height based on the screen height
     final double physicalHeight = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.height;
-    height = physicalHeight / devicePixelRatio;
+    _height = physicalHeight / devicePixelRatio;
 
     ///Sets the screenType based on the screen width
-    if (width >= 1024) {
-      screenType = ScreenType.desktop;
-    } else if (width >= 600) {
-      screenType = ScreenType.tablet;
+    if (_width >= 1024) {
+      _screenType = ScreenType.desktop;
+    } else if (_width >= 600) {
+      _screenType = ScreenType.tablet;
     } else {
-      screenType = ScreenType.mobile;
+      _screenType = ScreenType.mobile;
     }
 
     if (textOverflowWidget == null) {
-      rextOverflowWidget = const TextOverflowWidget();
+      _rextOverflowWidget = const TextOverflowWidget();
     } else {
-      rextOverflowWidget = textOverflowWidget;
+      _rextOverflowWidget = textOverflowWidget;
     }
   }
 
@@ -147,19 +147,19 @@ class ResponsiveUtil {
   @since 2024/07/12
   */
   static void _updateScreenSize(BoxConstraints constraints, Orientation currentOrientation) {
-    boxConstraints = constraints;
+    _boxConstraints = constraints;
 
-    orientation = currentOrientation;
+    _orientation = currentOrientation;
 
-    width = boxConstraints.maxWidth;
-    height = boxConstraints.maxHeight;
+    _width = _boxConstraints.maxWidth;
+    _height = _boxConstraints.maxHeight;
 
-    if (width >= _tabletBreakpoint) {
-      screenType = ScreenType.desktop;
-    } else if (width >= _mobileBreakpoint) {
-      screenType = ScreenType.tablet;
+    if (_width >= _tabletBreakpoint) {
+      _screenType = ScreenType.desktop;
+    } else if (_width >= _mobileBreakpoint) {
+      _screenType = ScreenType.tablet;
     } else {
-      screenType = ScreenType.mobile;
+      _screenType = ScreenType.mobile;
     }
   }
 
@@ -169,7 +169,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isMobile() {
-    return screenType == ScreenType.mobile;
+    return _screenType == ScreenType.mobile;
   }
 
   /// A bool to check weather the device is tablet
@@ -178,7 +178,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isTablet() {
-    return screenType == ScreenType.tablet;
+    return _screenType == ScreenType.tablet;
   }
 
   /// A bool to check weather the device is desktop
@@ -187,7 +187,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isDesktop() {
-    return screenType == ScreenType.desktop;
+    return _screenType == ScreenType.desktop;
   }
 
   /// A bool to check weather the device is iOS
@@ -196,7 +196,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isIos() {
-    return deviceType == DeviceType.ios;
+    return _deviceType == DeviceType.ios;
   }
 
   /// A bool to check weather the device is Android
@@ -205,7 +205,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isAndroid() {
-    return deviceType == DeviceType.android;
+    return _deviceType == DeviceType.android;
   }
 
   /// A bool to check weather the device is macOS
@@ -214,7 +214,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isMacOs() {
-    return deviceType == DeviceType.macos;
+    return _deviceType == DeviceType.macos;
   }
 
   /// A bool to check weather the device is Windows
@@ -223,7 +223,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isWindows() {
-    return deviceType == DeviceType.windows;
+    return _deviceType == DeviceType.windows;
   }
 
   /// A bool to check weather the device is Linux
@@ -232,7 +232,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isLinux() {
-    return deviceType == DeviceType.linux;
+    return _deviceType == DeviceType.linux;
   }
 
   /// A bool to check weather the device is Fuchsia
@@ -241,7 +241,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isFuchsia() {
-    return deviceType == DeviceType.fuchsia;
+    return _deviceType == DeviceType.fuchsia;
   }
 
   /// A bool to check weather the device is Web
@@ -250,7 +250,7 @@ class ResponsiveUtil {
   /// @since 2024/07/17
   /// @author IFD
   static bool isWeb() {
-    return deviceType == DeviceType.web;
+    return _deviceType == DeviceType.web;
   }
 
   /// A method to get the current device type
@@ -259,7 +259,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static DeviceType getDeviceType() {
-    return deviceType;
+    return _deviceType;
   }
 
   /// A method to get the current screen type
@@ -268,7 +268,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static ScreenType getScreenType() {
-    return screenType;
+    return _screenType;
   }
 
   /// A method to get the current orientation
@@ -277,7 +277,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static Orientation getOrientation() {
-    return orientation;
+    return _orientation;
   }
 
   /// A method to get the current box constraints
@@ -286,7 +286,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static BoxConstraints getBoxConstraints() {
-    return boxConstraints;
+    return _boxConstraints;
   }
 
   /// A method to get the current screen width
@@ -295,7 +295,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static double getWidth() {
-    return width;
+    return _width;
   }
 
   /// A method to get the current screen height
@@ -304,7 +304,7 @@ class ResponsiveUtil {
   /// @since 2024/07/15
   /// @author IFD
   static double getHeight() {
-    return height;
+    return _height;
   }
 
   /// A method to return a double based on the screen type
