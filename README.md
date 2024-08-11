@@ -324,7 +324,7 @@ The ResponsivePlus package comes with built in extensions to help easily set the
   );
   ```
 
-  - dw - Converts a number to a responsive width value based on the users physical screen width (example: 10.dw - 10% of display width)
+- dw - Converts a number to a responsive width value based on the users physical screen width (example: 10.dw - 10% of display width)
 
   - Example
 
@@ -334,7 +334,7 @@ The ResponsivePlus package comes with built in extensions to help easily set the
   Container(width: 10.w, color: Colors.blue, child: Text('10% of screen display width! (198)'))
   ```
 
-  - dh - Converts a number to a responsive width value based on the users physical screen height (example: 10.dh - 10% of display height)
+- dh - Converts a number to a responsive width value based on the users physical screen height (example: 10.dh - 10% of display height)
 
   - Example
 
