@@ -344,13 +344,13 @@ The ResponsivePlus package comes with built in extensions to help easily set the
   Container(width: 20.h, color: Colors.blue, child: Text('10% of screen display height! (216)'))
   ```
 
-  <h3> 📦 Additonal Features</h3>
+<h3> 📦 Additonal Features</h3>
 
-  - Set app constraints, if a user resizes the app to an unsupported size optionally show them a dialog and optionally perform a custom function.
-  - Create a custom Rext overflow widget when a Rext widget can no longer fit the text to your desired parameters.
-  - Create a RextGroup and add the group name to multiple Rext widgets in the "group" parameter to ensure they will always be the same size.
-  - Configure if a user can change the orientation on a device.
-  - Configure supported orientations.
+- Set app constraints, if a user resizes the app to an unsupported size optionally show them a dialog and optionally perform a custom function.
+- Create a custom Rext overflow widget when a Rext widget can no longer fit the text to your desired parameters.
+- Create a RextGroup and add the group name to multiple Rext widgets in the "group" parameter to ensure they will always be the same size.
+- Configure if a user can change the orientation on a device.
+- Configure supported orientations.
 
 <!--
 
