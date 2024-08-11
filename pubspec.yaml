@@ -4,7 +4,7 @@ version: 1.0.1
 homepage: https://rillastudios.ca/
 repository: https://github.com/RillaStudios/responsiveplus
 issue_tracker: https://github.com/RillaStudios/responsiveplus/issues
-funding: https://www.buymeacoffee.com/izaakford
+funding: [https://www.buymeacoffee.com/izaakford]
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
