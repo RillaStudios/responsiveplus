@@ -17,6 +17,10 @@
 ///auto_size_text package (GitHub): https://github.com/simc
 ///auto_size_text package (pub.dev): https://pub.dev/packages/auto_size_text
 ///
+///Shout out to them for the inspiration and the great work they have done!
+///This package is built on top of their work and aims to provide an even more
+///flexible and customizable solution for building responsive UIs in Flutter.
+///
 ///@author IFD
 ///@since 2024/07/12
 ///
@@ -34,7 +38,7 @@ part 'src/responsive_util.dart';
 
 part 'src/responsive_extenisions.dart';
 
-part 'src/responsive_builder.dart';
+part 'widgets/responsive_builder.dart';
 
 part 'src/responsive_exception.dart';
 
@@ -47,3 +51,5 @@ part 'widgets/text_widgets/rext.dart';
 part 'widgets/text_widgets/rext_group.dart';
 
 part 'widgets/text_widgets/text_overflow_widget.dart';
+
+part 'widgets/app_size_error_widget.dart';

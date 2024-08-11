@@ -31,7 +31,6 @@ List of features:
 <h4>🗚 Rext Widget</h4>
 
 - Rext widget: A Text widget that will automatically adjust its size based on screen size.
-- Rext Group: A RextGroup can be added to any and multiple Rext widgets. When assigning a RextGroup to a Rext widget this will ensure all the Rexts in that group have the same font size.
 
 <h5>Types of Rext Widgets</h5>
 
@@ -325,6 +324,34 @@ The ResponsivePlus package comes with built in extensions to help easily set the
   );
   ```
 
+  - dw - Converts a number to a responsive width value based on the users physical screen width (example: 10.dw - 10% of display width)
+
+  - Example
+
+  Lets pretend the user is using a 1920x1080 monitor display.
+
+  ```dart
+  Container(width: 10.w, color: Colors.blue, child: Text('10% of screen display width! (198)'))
+  ```
+
+  - dh - Converts a number to a responsive width value based on the users physical screen height (example: 10.dh - 10% of display height)
+
+  - Example
+
+  Lets pretend the user is using a 1920x1080 monitor display.
+
+  ```dart
+  Container(width: 20.h, color: Colors.blue, child: Text('10% of screen display height! (216)'))
+  ```
+
+  <h3> 📦 Additonal Features</h3>
+
+  - Set app constraints, if a user resizes the app to an unsupported size optionally show them a dialog and optionally perform a custom function.
+  - Create a custom Rext overflow widget when a Rext widget can no longer fit the text to your desired parameters.
+  - Create a RextGroup and add the group name to multiple Rext widgets in the "group" parameter to ensure they will always be the same size.
+  - Configure if a user can change the orientation on a device.
+  - Configure supported orientations.
+
 <!--
 
 Im going to try and make a YouTube video for this package, or if someone whose
@@ -356,55 +383,58 @@ import 'package:responsive/responsive.dart';
 ## 🧪 Example
 
 ```dart
-import 'package:responsive/responsive.dart';
+import 'package:flutter/material.dart';
+import 'package:responsiveplus/responsive.dart';
+
+void main() {
+  /// Ensure that the WidgetsBinding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// Initialize the ResponsiveUtil
+  /// This is required to make the package work
+  ///
+  /// All parameters are optional
+  ResponsiveUtil.init(
+    enableOrientationChange: false,
+    appConstraints: const BoxConstraints(maxWidth: 1600, minWidth: 550, minHeight: 500),
+  );
+
+  /// Run the app
+  runApp(const ExampleApp());
+}
 
 /// Example App
-/// This is an example app that shows some of the features of the ResponsivePlus package.
+/// This is an example app that shows how to use the Responsive package
 class ExampleApp extends StatelessWidget {
   const ExampleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          width: 75.w, // 75% of the screen width
-          height: 50.h, // 50% of the screen height
-          color: Colors.green,
-          child: ResponsiveChild(
-            onScreenSizeChanged: (constraints) {
-              /// This function will be called whenever the screen size changes (this is an optional parameter)
-              print('Screen size changed to: ${constraints.maxWidth}x${constraints.maxHeight}');
-            },
-            child: (context, constraints) {
-              /// Child will set its constraints based on the
-              /// size of the parent container and can use it
-              ///to calculate the size of its children, in this
-              ///case it is a Rext widget.
-              ///
-              ///Explanation:
-              ///
-              ///Lets pretend the users screen size is 1000px
-              ///
-              ///The Container is 75% of the screen height (which would be 750px)
-              ///The Rext widgets initial font size is 2% of that 750px, which would
-              ///equal 15px.
-              ///
-              return Center(
-                child: Rext(
-                  'This is a Rext widget inside a Container',
-                  maxLines: 1,
-                  fontSize: 2.cw(constraints),
+      home: ResponsiveBuilder(
+        builder: (context, constraints, orientation, screenType) {
+          return Scaffold(
+            body: Center(
+              child: Container(
+                width: 75.w, // 75% of the screen width
+                height: 50.h, // 50% of the screen height
+                color: Colors.green,
+                child: Center(
+                  ///A Rext widget for auto sizing text
+                  child: Rext(
+                    'I am auto sizing myself to stay on 2 lines! The container is always 75% of the screen width and 50% of its height!',
+                    maxLines: 2, fontSize: 2.cw(constraints), //2% of nearest provided constraints width
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
 }
-
 ```
 
 ## ℹ️ Additional information

@@ -32,4 +32,10 @@ extension ResponsiveExt on num {
   ///
   ///The value is calculated by multiplying the number by the maximum height of the constraints and dividing by 100
   double ch(BoxConstraints constraints) => this * constraints.maxHeight / 100;
+
+  ///Converts the number to a responsive width value based on the users physical screen width
+  double get dw => this * ResponsiveUtil._displayWidth / 100;
+
+  ///Converts the number to a responsive width value based on the users physical screen height
+  double get dh => this * ResponsiveUtil._displayHeight / 100;
 }
