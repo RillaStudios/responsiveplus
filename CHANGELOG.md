@@ -5,3 +5,7 @@
 ## 1.0.1
 
 - Formatted to follow dart format conventions.
+
+## 1.0.2
+
+- Fixed to pass static analysis.
