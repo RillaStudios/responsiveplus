@@ -348,7 +348,8 @@ class WrapColumn extends StatelessWidget {
   /// A list of widgets that will be built in the wrap or column.
   /// The list of widgets will be built inside the wrap or
   /// column based on the screen size.
-  final List<Widget> Function(BuildContext context, BoxConstraints constraints) children;
+  final List<Widget> Function(BuildContext context, BoxConstraints constraints)
+      children;
 
   /// The width of the Material widget that wraps the wrap or column.
   /// This will set the width for the entire wrap or column.
@@ -383,7 +384,8 @@ class WrapColumn extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         //Check if a custom breakpoint has been assigned
-        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil._width) {
+        if (customBreakpoint != null &&
+            customBreakpoint! >= ResponsiveUtil._width) {
           return columnToRow != true ? column() : wrap();
         } else {
           switch (ResponsiveUtil._screenType) {
@@ -445,7 +447,9 @@ class WrapColumn extends StatelessWidget {
     return styleWrap(
       child: LayoutBuilder(builder: (context, constraints) {
         // Build the list of widgets before providing it to its parent
-        final List<Widget> builder = reverseChildren == true ? children(context, constraints).reversed.toList() : children(context, constraints);
+        final List<Widget> builder = reverseChildren == true
+            ? children(context, constraints).reversed.toList()
+            : children(context, constraints);
 
         return Wrap(
           clipBehavior: clipBehavior,
@@ -473,9 +477,12 @@ class WrapColumn extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           // Build the list of widgets before providing it to its parent
-          final List<Widget> builder = reverseChildren == true ? children(context, constraints).reversed.toList() : children(context, constraints);
+          final List<Widget> builder = reverseChildren == true
+              ? children(context, constraints).reversed.toList()
+              : children(context, constraints);
           return Column(
-            crossAxisAlignment: colCrossAxisAlignment ?? CrossAxisAlignment.center,
+            crossAxisAlignment:
+                colCrossAxisAlignment ?? CrossAxisAlignment.center,
             mainAxisAlignment: colMainAxisAlignment ?? MainAxisAlignment.start,
             mainAxisSize: colMainAxisSize ?? MainAxisSize.max,
             textBaseline: colTextBaseline,

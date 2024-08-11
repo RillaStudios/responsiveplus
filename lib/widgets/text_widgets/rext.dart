@@ -426,7 +426,9 @@ class Rext extends StatefulWidget {
   /// If not provided, the default
   /// context menu builder will be null
   ///
-  final Widget Function(BuildContext context, EditableTextState editableTextState)? contextMenuBuilder;
+  final Widget Function(
+          BuildContext context, EditableTextState editableTextState)?
+      contextMenuBuilder;
 
   /// The color of the cursor when the [Rext] is selectable
   ///
@@ -509,7 +511,8 @@ class Rext extends StatefulWidget {
   /// If not provided, the default selection
   /// changed will be null
   ///
-  final void Function(TextSelection selection, SelectionChangedCause? cause)? onSelectionChanged;
+  final void Function(TextSelection selection, SelectionChangedCause? cause)?
+      onSelectionChanged;
 
   /// The tap of the text created by this
   /// widget when the [Rext] is selectable
@@ -588,7 +591,9 @@ class RextState extends State<Rext> {
       widget.rextGroup!.registerText(this);
     }
 
-    if (widget._isSelectable && widget.contextMenuBuilder != null && widget.useDefaultContextMenuOnWeb) {
+    if (widget._isSelectable &&
+        widget.contextMenuBuilder != null &&
+        widget.useDefaultContextMenuOnWeb) {
       BrowserContextMenu.disableContextMenu();
     }
 
@@ -605,7 +610,9 @@ class RextState extends State<Rext> {
       widget.rextGroup!.remove(this);
     }
 
-    if (widget._isSelectable && widget.contextMenuBuilder != null && widget.useDefaultContextMenuOnWeb) {
+    if (widget._isSelectable &&
+        widget.contextMenuBuilder != null &&
+        widget.useDefaultContextMenuOnWeb) {
       BrowserContextMenu.enableContextMenu();
     }
     super.dispose();
@@ -629,7 +636,10 @@ class RextState extends State<Rext> {
         ///the [Rext] widgets in the group.
         ///Otherwise, it will calculate the
         ///font size based on the constraintsz
-        _responsiveFontSize = widget.rextGroup != null ? widget.rextGroup!.updateGroupFontSize(this, _calculateFontSize(constraints)) : _calculateFontSize(constraints);
+        _responsiveFontSize = widget.rextGroup != null
+            ? widget.rextGroup!
+                .updateGroupFontSize(this, _calculateFontSize(constraints))
+            : _calculateFontSize(constraints);
 
         ///Build the text widget with the
         ///responsive font size.
@@ -658,7 +668,9 @@ class RextState extends State<Rext> {
           ///number of lines.
           ///
           ///Default value is null (no limit)
-          widget.rextGroup != null ? widget.rextGroup!.groupMaxLines : widget.maxLines,
+          widget.rextGroup != null
+              ? widget.rextGroup!.groupMaxLines
+              : widget.maxLines,
         );
       },
     );
@@ -675,7 +687,8 @@ class RextState extends State<Rext> {
     ///If the [data] is provided, it will
     ///use the [data] to create the text
     ///
-    if (!_fits && widget.showDefaultOverflowWidget) return ResponsiveUtil._rextOverflowWidget!;
+    if (!_fits && widget.showDefaultOverflowWidget)
+      return ResponsiveUtil._rextOverflowWidget!;
 
     if (widget.data != null) {
       ///Create the text widget with the
@@ -704,7 +717,8 @@ class RextState extends State<Rext> {
           cursorHeight: widget.cursorHeight,
           cursorRadius: widget.cursorRadius,
           cursorWidth: widget.cursorWidth ?? 2.0,
-          dragStartBehavior: widget.dragStartBehavior ?? DragStartBehavior.start,
+          dragStartBehavior:
+              widget.dragStartBehavior ?? DragStartBehavior.start,
           enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
           focusNode: widget.focusNode,
           magnifierConfiguration: widget.magnifierConfiguration,
@@ -713,8 +727,10 @@ class RextState extends State<Rext> {
           onTap: widget.onTap,
           scrollPhysics: widget.scrollPhysics,
           selectionControls: widget.selectionControls,
-          selectionHeightStyle: widget.selectionHeightStyle ?? BoxHeightStyle.tight,
-          selectionWidthStyle: widget.selectionWidthStyle ?? BoxWidthStyle.tight,
+          selectionHeightStyle:
+              widget.selectionHeightStyle ?? BoxHeightStyle.tight,
+          selectionWidthStyle:
+              widget.selectionWidthStyle ?? BoxWidthStyle.tight,
           showCursor: widget.showCursor ?? false,
         );
       }
@@ -752,7 +768,8 @@ class RextState extends State<Rext> {
         return SelectableText.rich(
           widget.textSpan!,
           key: widget.textKey,
-          style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
+          style: widget.style?.copyWith(fontSize: _responsiveFontSize) ??
+              TextStyle(fontSize: _responsiveFontSize),
           strutStyle: widget.strutStyle,
           textAlign: widget.textAlign,
           textDirection: widget.textDirection,
@@ -767,7 +784,8 @@ class RextState extends State<Rext> {
           cursorHeight: widget.cursorHeight,
           cursorRadius: widget.cursorRadius,
           cursorWidth: widget.cursorWidth ?? 2.0,
-          dragStartBehavior: widget.dragStartBehavior ?? DragStartBehavior.start,
+          dragStartBehavior:
+              widget.dragStartBehavior ?? DragStartBehavior.start,
           enableInteractiveSelection: widget.enableInteractiveSelection ?? true,
           focusNode: widget.focusNode,
           magnifierConfiguration: widget.magnifierConfiguration,
@@ -776,8 +794,10 @@ class RextState extends State<Rext> {
           onTap: widget.onTap,
           scrollPhysics: widget.scrollPhysics,
           selectionControls: widget.selectionControls,
-          selectionHeightStyle: widget.selectionHeightStyle ?? BoxHeightStyle.tight,
-          selectionWidthStyle: widget.selectionWidthStyle ?? BoxWidthStyle.tight,
+          selectionHeightStyle:
+              widget.selectionHeightStyle ?? BoxHeightStyle.tight,
+          selectionWidthStyle:
+              widget.selectionWidthStyle ?? BoxWidthStyle.tight,
           showCursor: widget.showCursor ?? false,
         );
       }
@@ -787,7 +807,8 @@ class RextState extends State<Rext> {
       return Text.rich(
         widget.textSpan!,
         key: widget.textKey,
-        style: widget.style?.copyWith(fontSize: _responsiveFontSize) ?? TextStyle(fontSize: _responsiveFontSize),
+        style: widget.style?.copyWith(fontSize: _responsiveFontSize) ??
+            TextStyle(fontSize: _responsiveFontSize),
         strutStyle: widget.strutStyle,
         textAlign: widget.textAlign,
         textDirection: widget.textDirection,
@@ -820,25 +841,32 @@ class RextState extends State<Rext> {
     ///
     ///If not provided, the default font
     ///size will be 14
-    double fontSize = widget.rextGroup != null ? widget.rextGroup!.groupFontSize ?? 14 : widget.fontSize ?? 14;
+    double fontSize = widget.rextGroup != null
+        ? widget.rextGroup!.groupFontSize ?? 14
+        : widget.fontSize ?? 14;
 
     ///The maximum font size of the text
     ///
     ///If not provided, the default maximum
     ///font size will be double.infinity
-    final double maxFontSize = widget.rextGroup != null ? widget.rextGroup!.groupMaxFontSize ?? double.infinity : widget.maxFontSize ?? double.infinity;
+    final double maxFontSize = widget.rextGroup != null
+        ? widget.rextGroup!.groupMaxFontSize ?? double.infinity
+        : widget.maxFontSize ?? double.infinity;
 
     ///The minimum font size of the text
     ///
     ///If not provided, the default minimum
     ///font size will be 8
-    final double minFontSize = widget.rextGroup != null ? widget.rextGroup!.groupMinFontSize ?? 8 : widget.minFontSize ?? 8;
+    final double minFontSize = widget.rextGroup != null
+        ? widget.rextGroup!.groupMinFontSize ?? 8
+        : widget.minFontSize ?? 8;
 
     ///The style of the text
     ///
     ///If not provided, the default style
     ///will be [DefaultTextStyle]
-    final TextStyle style = (widget.style ?? DefaultTextStyle.of(context).style);
+    final TextStyle style =
+        (widget.style ?? DefaultTextStyle.of(context).style);
 
     ///If the [presetFontSizes] is provided and not empty
     ///it will sort the list of preset font sizes from
@@ -848,10 +876,14 @@ class RextState extends State<Rext> {
     ///It will return the first font size that fits the
     ///constraints.
     if (widget.presetFontSizes != null && widget.presetFontSizes!.isNotEmpty ||
-        widget.rextGroup != null && widget.rextGroup!.groupPresetFontSizes != null && widget.rextGroup!.groupPresetFontSizes!.isNotEmpty) {
+        widget.rextGroup != null &&
+            widget.rextGroup!.groupPresetFontSizes != null &&
+            widget.rextGroup!.groupPresetFontSizes!.isNotEmpty) {
       ///Set the list of preset font sizes
       ///to a new list
-      List<double> sortedFontSizes = widget.rextGroup != null ? List.from(widget.rextGroup!.groupPresetFontSizes!) : List.from(widget.presetFontSizes!);
+      List<double> sortedFontSizes = widget.rextGroup != null
+          ? List.from(widget.rextGroup!.groupPresetFontSizes!)
+          : List.from(widget.presetFontSizes!);
 
       ///Sort the list of preset font sizes from
       ///biggest to smallest
@@ -919,14 +951,22 @@ class RextState extends State<Rext> {
 
   ///Checks if the font size fits the
   ///constraints of the parent widget.
-  bool _fitsConstraints(double fontSize, TextStyle style, BoxConstraints constraints) {
+  bool _fitsConstraints(
+      double fontSize, TextStyle style, BoxConstraints constraints) {
     ///Create a [TextPainter] widget with
     ///the text, style, and font size
     final TextPainter textPainter = TextPainter(
-      text: widget.data != null ? TextSpan(text: widget.data, style: style.copyWith(fontSize: fontSize)) : TextSpan(style: style.copyWith(fontSize: fontSize), children: widget.textSpan!.children),
+      text: widget.data != null
+          ? TextSpan(
+              text: widget.data, style: style.copyWith(fontSize: fontSize))
+          : TextSpan(
+              style: style.copyWith(fontSize: fontSize),
+              children: widget.textSpan!.children),
       textDirection: widget.textDirection ?? TextDirection.ltr,
       textAlign: widget.textAlign ?? TextAlign.start,
-      maxLines: widget.rextGroup != null ? widget.rextGroup!.groupMaxLines : widget.maxLines,
+      maxLines: widget.rextGroup != null
+          ? widget.rextGroup!.groupMaxLines
+          : widget.maxLines,
       strutStyle: widget.strutStyle,
       textScaler: widget.textScaler ?? TextScaler.noScaling,
     );
@@ -942,7 +982,8 @@ class RextState extends State<Rext> {
     ///and it does not exceed the maximum
     ///number of lines. Otherwise, return
     ///false.
-    return !(textPainter.didExceedMaxLines || textPainter.width > constraints.maxWidth);
+    return !(textPainter.didExceedMaxLines ||
+        textPainter.width > constraints.maxWidth);
   }
 
   ///Notifies the [RextGroup] that the
@@ -956,30 +997,40 @@ class RextState extends State<Rext> {
   ///Checks for errors in the [Rext] widget
   ///and throws an error if there is an issue.
   void checkForErrors() {
-    assert(widget.data != null || widget.textSpan != null, throw ResponsiveException('Rext widget must have either a text (string) or textSpan property'));
+    assert(
+        widget.data != null || widget.textSpan != null,
+        throw ResponsiveException(
+            'Rext widget must have either a text (string) or textSpan property'));
     if (widget.rextGroup != null) {
       assert(
         widget.fontSize == null,
-        throw ResponsiveException('Font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupFontSize property in the RextGroup instead'),
+        throw ResponsiveException(
+            'Font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupFontSize property in the RextGroup instead'),
       );
       assert(
         widget.maxFontSize == null,
-        throw ResponsiveException('Max font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxFontSize property in the RextGroup instead'),
+        throw ResponsiveException(
+            'Max font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxFontSize property in the RextGroup instead'),
       );
       assert(
         widget.minFontSize == null,
-        throw ResponsiveException('Min font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMinFontSize property in the RextGroup instead'),
+        throw ResponsiveException(
+            'Min font size in the Rext widget cannot be used when a RextGroup is provided. Use the groupMinFontSize property in the RextGroup instead'),
       );
       assert(
         widget.presetFontSizes == null,
-        throw ResponsiveException('Preset font sizes in the Rext widget cannot be used when a RextGroup is provided. Use the groupPresetFontSizes property in the RextGroup instead'),
+        throw ResponsiveException(
+            'Preset font sizes in the Rext widget cannot be used when a RextGroup is provided. Use the groupPresetFontSizes property in the RextGroup instead'),
       );
       assert(
         widget.maxLines == null,
-        throw ResponsiveException('Max lines in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxLines property in the RextGroup instead'),
+        throw ResponsiveException(
+            'Max lines in the Rext widget cannot be used when a RextGroup is provided. Use the groupMaxLines property in the RextGroup instead'),
       );
-      assert(widget.adjustmentSize == null,
-          throw ResponsiveException('Adjustment size in the Rext widget cannot be used when a RextGroup is provided. Use the groupAdjustmentSize property in the RextGroup instead'));
+      assert(
+          widget.adjustmentSize == null,
+          throw ResponsiveException(
+              'Adjustment size in the Rext widget cannot be used when a RextGroup is provided. Use the groupAdjustmentSize property in the RextGroup instead'));
     }
   }
 }

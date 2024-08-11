@@ -27,7 +27,8 @@ typedef ResponsiveBuilderType = Widget Function(
 class ResponsiveBuilder extends StatelessWidget {
   /// Creates a Responsive widget.
   ///
-  const ResponsiveBuilder({super.key, required this.builder, this.onScreenSizeChange});
+  const ResponsiveBuilder(
+      {super.key, required this.builder, this.onScreenSizeChange});
 
   /// The builder function that takes three parameters: context, orientation, and screenType.
   final ResponsiveBuilderType builder;
@@ -41,7 +42,8 @@ class ResponsiveBuilder extends StatelessWidget {
   ///
   /// This functions is optional.
   ///
-  final Function(BuildContext? context, BoxConstraints? constraints, Orientation? orientation, ScreenType? screenType)? onScreenSizeChange;
+  final Function(BuildContext? context, BoxConstraints? constraints,
+      Orientation? orientation, ScreenType? screenType)? onScreenSizeChange;
 
   ///
   /// The build method of the Responsive widget.
@@ -58,7 +60,10 @@ class ResponsiveBuilder extends StatelessWidget {
           builder: (context, orientation) {
             ResponsiveUtil._updateScreenSize(context, constraints, orientation);
 
-            onScreenSizeChange != null ? onScreenSizeChange!(context, constraints, orientation, ResponsiveUtil._screenType) : null;
+            onScreenSizeChange != null
+                ? onScreenSizeChange!(context, constraints, orientation,
+                    ResponsiveUtil._screenType)
+                : null;
 
             return builder(
               context,

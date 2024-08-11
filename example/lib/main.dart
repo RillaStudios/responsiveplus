@@ -11,7 +11,8 @@ void main() {
   /// All parameters are optional
   ResponsiveUtil.init(
     enableOrientationChange: false,
-    appConstraints: const BoxConstraints(maxWidth: 1600, minWidth: 550, minHeight: 500),
+    appConstraints:
+        const BoxConstraints(maxWidth: 1600, minWidth: 550, minHeight: 500),
   );
 
   /// Run the app
@@ -38,7 +39,9 @@ class ExampleApp extends StatelessWidget {
                   ///A Rext widget for auto sizing text
                   child: Rext(
                     'I am auto sizing myself to stay on 2 lines! The container is always 75% of the screen width and 50% of its height!',
-                    maxLines: 2, fontSize: 2.cw(constraints), //2% of nearest provided constraints width
+                    maxLines: 2,
+                    fontSize: 2.cw(
+                        constraints), //2% of nearest provided constraints width
                     textAlign: TextAlign.center,
                   ),
                 ),

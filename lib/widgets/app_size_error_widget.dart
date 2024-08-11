@@ -46,7 +46,9 @@ class AppSizeErrorWidget extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              error == SizeError.tooBig ? 'Screen size is too big.' : 'Screen size is too small.',
+              error == SizeError.tooBig
+                  ? 'Screen size is too big.'
+                  : 'Screen size is too small.',
               style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black,

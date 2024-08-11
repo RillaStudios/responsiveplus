@@ -246,7 +246,8 @@ class ResponsiveUtil {
     ///Set the dialogBarrierColor based on the parameters,
     ///default is Colors.grey.shade800.withOpacity(0.85)
     ///
-    _dialogBarrierColor = dialogBarrierColor ?? Colors.grey.shade800.withOpacity(0.85);
+    _dialogBarrierColor =
+        dialogBarrierColor ?? Colors.grey.shade800.withOpacity(0.85);
 
     /// If the allowOrientationChange is false and the platform is not web
     /// then set the preferred orientation to portraitUp.
@@ -254,7 +255,11 @@ class ResponsiveUtil {
     /// This will prevent the app from changing orientation.
     if (!_allowOrientationChange && !kIsWeb) {
       SystemChrome.setPreferredOrientations(
-        [allowedOrientations != null && allowedOrientations.isNotEmpty ? allowedOrientations.first : DeviceOrientation.portraitUp],
+        [
+          allowedOrientations != null && allowedOrientations.isNotEmpty
+              ? allowedOrientations.first
+              : DeviceOrientation.portraitUp
+        ],
       );
     } else {
       /// If the allowedOrientations is not null then set the preferred orientations
@@ -281,24 +286,30 @@ class ResponsiveUtil {
         case TargetPlatform.fuchsia:
           _deviceType = DeviceType.fuchsia;
         default:
-          throw ResponsiveException('Unsupported Platform: $defaultTargetPlatform is not supported. Not setting device type.');
+          throw ResponsiveException(
+              'Unsupported Platform: $defaultTargetPlatform is not supported. Not setting device type.');
       }
     }
 
     ///Sets the device pixel ratio based on the device
-    final double devicePixelRatio = WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
+    final double devicePixelRatio =
+        WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
 
     ///Sets the screen width based on the screen width
-    final double physicalWidth = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
+    final double physicalWidth = WidgetsBinding
+        .instance.platformDispatcher.views.first.physicalSize.width;
     _width = physicalWidth / devicePixelRatio;
 
-    _displayWidth = WidgetsBinding.instance.platformDispatcher.views.first.display.size.width;
+    _displayWidth = WidgetsBinding
+        .instance.platformDispatcher.views.first.display.size.width;
 
     ///Sets the screen height based on the screen height
-    final double physicalHeight = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.height;
+    final double physicalHeight = WidgetsBinding
+        .instance.platformDispatcher.views.first.physicalSize.height;
     _height = physicalHeight / devicePixelRatio;
 
-    _displayHeight = WidgetsBinding.instance.platformDispatcher.views.first.display.size.height;
+    _displayHeight = WidgetsBinding
+        .instance.platformDispatcher.views.first.display.size.height;
 
     ///Sets the screenType based on the screen width
     if (_width >= 1024) {
@@ -323,7 +334,8 @@ class ResponsiveUtil {
   /// @author IFD
   /// @since 2024/07/12
   ///
-  static void _updateScreenSize(BuildContext context, BoxConstraints constraints, Orientation currentOrientation) {
+  static void _updateScreenSize(BuildContext context,
+      BoxConstraints constraints, Orientation currentOrientation) {
     _boxConstraints = constraints;
 
     _orientation = currentOrientation;
@@ -357,11 +369,15 @@ class ResponsiveUtil {
   /// @since 2024/08/10
   static void _checkAppSize(BuildContext context) {
     ///Check if current screen width is less than the minAppSize
-    if (_width < _appConstraints!.minWidth || _height < _appConstraints!.minHeight || _width > _appConstraints!.maxWidth || _height > _appConstraints!.maxHeight) {
+    if (_width < _appConstraints!.minWidth ||
+        _height < _appConstraints!.minHeight ||
+        _width > _appConstraints!.maxWidth ||
+        _height > _appConstraints!.maxHeight) {
       ///Check to make sure _appSizeError is not already in an error state
       if (_appSizeError == null) {
         ///If it is then set the appSizeError to tooSmall
-        if (_width > _appConstraints!.maxWidth || _height > _appConstraints!.maxHeight) {
+        if (_width > _appConstraints!.maxWidth ||
+            _height > _appConstraints!.maxHeight) {
           _appSizeError = SizeError.tooBig;
         } else {
           _appSizeError = SizeError.tooSmall;
@@ -373,10 +389,12 @@ class ResponsiveUtil {
             if (_showDialogOnSizeError == true) {
               showDialog(
                 barrierDismissible: _dialogBarrierDismissible ?? false,
-                barrierColor: _dialogBarrierColor ?? Colors.grey.shade800.withOpacity(0.85),
+                barrierColor: _dialogBarrierColor ??
+                    Colors.grey.shade800.withOpacity(0.85),
                 context: context,
                 builder: (context) {
-                  return _customAppSizeErrorDialog ?? AppSizeErrorWidget(error: _appSizeError!);
+                  return _customAppSizeErrorDialog ??
+                      AppSizeErrorWidget(error: _appSizeError!);
                 },
               );
             }
@@ -571,7 +589,8 @@ class ResponsiveUtil {
   /// @return double
   /// @since 2024/07/15
   /// @author IFD
-  static double getDouble({required double mobile, double? tablet, required double desktop}) {
+  static double getDouble(
+      {required double mobile, double? tablet, required double desktop}) {
     if (isMobile()) {
       return mobile;
     } else if (isTablet()) {

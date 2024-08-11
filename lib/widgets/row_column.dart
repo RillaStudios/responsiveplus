@@ -300,7 +300,8 @@ class RowColumn extends StatelessWidget {
   /// A list of widgets that will be built in the row or column.
   /// The list of widgets will be built inside the row or
   /// column based on the screen size.
-  final List<Widget> Function(BuildContext context, BoxConstraints constraints) children;
+  final List<Widget> Function(BuildContext context, BoxConstraints constraints)
+      children;
 
   /// The width of the Material widget that wraps the row or column.
   /// This will set the width for the entire row or column.
@@ -335,7 +336,8 @@ class RowColumn extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         //Check if a custom breakpoint has been assigned
-        if (customBreakpoint != null && customBreakpoint! >= ResponsiveUtil._width) {
+        if (customBreakpoint != null &&
+            customBreakpoint! >= ResponsiveUtil._width) {
           return columnToRow != true ? column() : row();
         } else {
           switch (ResponsiveUtil._screenType) {
@@ -397,10 +399,13 @@ class RowColumn extends StatelessWidget {
     return styleWrap(
       child: LayoutBuilder(builder: (context, constraints) {
         // Build the list of widgets before providing it to its parent
-        final List<Widget> builder = reverseChildren == true ? children(context, constraints).reversed.toList() : children(context, constraints);
+        final List<Widget> builder = reverseChildren == true
+            ? children(context, constraints).reversed.toList()
+            : children(context, constraints);
 
         return Row(
-          crossAxisAlignment: rowCrossAxisAlignment ?? CrossAxisAlignment.center,
+          crossAxisAlignment:
+              rowCrossAxisAlignment ?? CrossAxisAlignment.center,
           mainAxisAlignment: rowMainAxisAlignment ?? MainAxisAlignment.start,
           mainAxisSize: rowMainAxisSize ?? MainAxisSize.max,
           textBaseline: rowTextBaseline,
@@ -422,9 +427,12 @@ class RowColumn extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           // Build the list of widgets before providing it to its parent
-          final List<Widget> builder = reverseChildren == true ? children(context, constraints).reversed.toList() : children(context, constraints);
+          final List<Widget> builder = reverseChildren == true
+              ? children(context, constraints).reversed.toList()
+              : children(context, constraints);
           return Column(
-            crossAxisAlignment: colCrossAxisAlignment ?? CrossAxisAlignment.center,
+            crossAxisAlignment:
+                colCrossAxisAlignment ?? CrossAxisAlignment.center,
             mainAxisAlignment: colMainAxisAlignment ?? MainAxisAlignment.start,
             mainAxisSize: colMainAxisSize ?? MainAxisSize.max,
             textBaseline: colTextBaseline,
