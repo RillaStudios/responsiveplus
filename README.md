@@ -232,6 +232,32 @@ The ResponsivePlus package comes with many easily callable methods, which can he
     }
   ```
 
+- ResponsiveUtil.getDisplayWidth() - Returns the current display width (double)
+
+  - Example
+
+  ```dart
+    void displayWidthGetter() {
+      double displayWidth = ResponsiveUtil.getDisplayWidth();
+
+        print('display width is $displayWidth');
+
+    }
+  ```
+
+- ResponsiveUtil.getDisplayHeight() - Returns the current display height (double)
+
+  - Example
+
+  ```dart
+    void displayHeightGetter() {
+      double displayHeight = ResponsiveUtil.getDisplayHeight();
+
+        print('display height is $displayHeight');
+
+    }
+  ```
+
 - ResponsiveUtil.getDouble() - Will return a double based on current ScreenType (double)
 
   - Example
