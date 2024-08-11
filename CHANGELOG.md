@@ -6,6 +6,6 @@
 
 - Formatted to follow dart format conventions.
 
-## 1.0.2
+## 1.0.3
 
 - Fixed to pass static analysis.
