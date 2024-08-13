@@ -13,7 +13,7 @@ and the Flutter guide for
 
 ResponsivePlus is a powerful and versatile package designed to simplify and enhance responsive design in Flutter applications. It offers a comprehensive set of tools, methods, and custom widgets that enable developers to create highly adaptable and customizable user interfaces. Whether you are building for mobile, tablet, or desktop, ResponsivePlus ensures your app looks great on any screen size or orientation.
 
-<img src="resources/responsive_img.png" alt="Responsive Design Image" style="width: 50%;">
+<img src="https://raw.githubusercontent.com/RillaStudios/responsiveplus/ab8d8d24a46b21606ad498406b6956ad5aa03584/resources/responsive_img.png" alt="Responsive Design Image" style="width: 50%;">
 
 ResponsivePlus attempts to make life a little easier and your projects dependency list smaller. The ResponsivePlus package aims to provide you with a package that can handle all aspects of making your apps responsive from custom responsive widgets to auto resizing widgets and text!
 
