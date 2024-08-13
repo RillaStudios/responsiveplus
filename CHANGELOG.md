@@ -10,6 +10,6 @@
 
 - Fixed to pass static analysis.
 
-## 1.0.4
+## 1.0.5
 
 - Minor bug fixes.
