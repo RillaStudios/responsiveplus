@@ -9,3 +9,7 @@
 ## 1.0.3
 
 - Fixed to pass static analysis.
+
+## 1.0.4
+
+- Minor bug fixes.
